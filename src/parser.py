@@ -89,6 +89,7 @@ class Event:
     day_index: int = 1            # какой это день события: «(2 из 3)»
     day_count: int = 1
     recurrence: str | None = None  # «по субботам и воскресеньям», если событие повторяется
+    url: str | None = None        # ссылка на исходный пост
 
     def key(self) -> tuple:
         return (self.date, self.title.lower().strip(), self.address.lower().strip())
@@ -247,7 +248,8 @@ def _clean_title(t: str) -> str:
 
 # ---------- разбор ----------
 
-def parse_message(text: str, msg_date: datetime | date, source: str = "", message_id: str = "") -> list[Event]:
+def parse_message(text: str, msg_date: datetime | date, source: str = "", message_id: str = "",
+                  url: str | None = None) -> list[Event]:
     ref = msg_date.date() if isinstance(msg_date, datetime) else msg_date
     text = clean_markdown(EXPORT_HEADER_RE.sub("", text))
     dates = _message_dates(text, ref)
@@ -318,7 +320,7 @@ def parse_message(text: str, msg_date: datetime | date, source: str = "", messag
             t_start, t_end = time_for(d)
             events.append(Event(date=d.isoformat(), title=title, address=address, time_start=t_start,
                                 time_end=t_end, description=description, price=price or global_price,
-                                emoji=emoji, source=source, message_id=message_id,
+                                emoji=emoji, source=source, message_id=message_id, url=url,
                                 day_index=i, day_count=len(dates), recurrence=recurrence))
         return events
 
@@ -357,7 +359,7 @@ def parse_message(text: str, msg_date: datetime | date, source: str = "", messag
         for i, d in enumerate(dates, start=1):
             events.append(Event(date=d.isoformat(), title=title, address=address, time_start=t_start,
                                 time_end=t_end, description=" ".join(desc), price=price or global_price,
-                                emoji=emoji, source=source, message_id=message_id,
+                                emoji=emoji, source=source, message_id=message_id, url=url,
                                 day_index=i, day_count=len(dates)))
     return events
 
@@ -429,7 +431,7 @@ def dedupe(events: list[Event]) -> list[Event]:
         merged = Event(**desc_src.to_dict())
         merged.title = title_src.title
         merged.emoji = title_src.emoji or merged.emoji
-        for f in ("time_end", "price", "title_ru", "recurrence"):
+        for f in ("time_end", "price", "title_ru", "recurrence", "url"):
             if not getattr(merged, f):
                 for c in cands:
                     if getattr(c, f):

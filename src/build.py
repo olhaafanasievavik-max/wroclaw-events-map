@@ -50,7 +50,8 @@ def main():
 
     events: list[Event] = []
     for m in msgs:
-        evs = parse_message(m["text"], m["date"], source=m.get("source", ""), message_id=str(m.get("id", "")))
+        evs = parse_message(m["text"], m["date"], source=m.get("source", ""), message_id=str(m.get("id", "")),
+                            url=m.get("url"))
         print(f"  [{m['date']:%d.%m %H:%M}] {len(evs):2d} событий  {m['text'].strip().splitlines()[0][:60]}")
         events.extend(evs)
     events = dedupe(events)          # по тексту адреса

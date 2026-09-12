@@ -47,6 +47,7 @@
   .pp .t{font-weight:650;font-size:15px}
   .pp .ru{color:var(--muted)}
   .pp .m{color:var(--muted);font-size:13px;margin:2px 0}
+  .pp .m a{color:var(--accent)}
   .pp .desc{margin:6px 0;white-space:pre-line}
   .pp .desc.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
   .pp .toggle{background:none;border:none;color:var(--accent);cursor:pointer;padding:0;font:inherit;font-size:13px}
@@ -116,7 +117,8 @@ const hasRu = e => e.title_ru && norm(e.title_ru) !== norm(e.title);
 const shown = e => e.title + dayTag(e);                       // название с «(2 из 3)»
 function title(e){ return (hasRu(e) ? `${e.title} (${e.title_ru})` : e.title) + dayTag(e); }
 const metaLine = e => `🕒 ${esc(timeStr(e))}${e.recurrence ? ' · 🔁 ' + esc(e.recurrence) : ''}`;
-function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source : ''].filter(Boolean).join('\n\n'); }
+function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source + (e.url ? ' ' + e.url : '') : ''].filter(Boolean).join('\n\n'); }
+const sourceHtml = e => e.source ? `<div class="m">📰 ${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)}</a>` : esc(e.source)}</div>` : '';
 function gcalUrl(e){
   const [s,en] = range(e);
   const p = new URLSearchParams({action:'TEMPLATE', text:title(e), dates:`${local(s)}/${local(en)}`, ctz:TZ, details:details(e), location: e.address + ', Wrocław'});
@@ -145,7 +147,7 @@ function eventHtml(e, idx, full){
   const long = (e.description || '').length > 260;
   return h + (e.description ? `<div class="desc${long ? ' clamp' : ''}" id="d${idx}">${esc(e.description)}</div>` +
       (long ? `<button class="toggle" onclick="toggleDesc(${idx}, this)">Читать дальше ▾</button>` : '') : '') +
-    (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') +
+    (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') + sourceHtml(e) +
     `<div class="btns"><a class="btn" target="_blank" rel="noopener" href="${gcalUrl(e)}">📅 Google Calendar</a>` +
     `<button class="btn" onclick="downloadIcs(${idx})">⬇ .ics</button>` +
     `<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.address + ', Wrocław')}">🗺 Маршрут</a></div>`;

@@ -90,10 +90,15 @@ def main():
         source = (origin.get("chat") or {}).get("title") or origin.get("sender_user_name") or "переслано боту"
         ts = origin.get("date") or msg["date"]
         date = datetime.fromtimestamp(ts, tz=timezone.utc)
-        rec = {"id": f"bot_{u['update_id']}", "date": date.isoformat(), "source": source, "text": text}
+        url = None
+        och = origin.get("chat") or {}
+        if origin.get("type") == "channel" and origin.get("message_id"):
+            url = (f"https://t.me/{och['username']}/{origin['message_id']}" if och.get("username")
+                   else f"https://t.me/c/{str(och.get('id', '')).replace('-100', '', 1)}/{origin['message_id']}")
+        rec = {"id": f"bot_{u['update_id']}", "date": date.isoformat(), "source": source, "text": text, "url": url}
         new_msgs.append(rec)
 
-        evs = parse_message(text, date, source=source, message_id=rec["id"])
+        evs = parse_message(text, date, source=source, message_id=rec["id"], url=url)
         if evs:
             days = sorted({e.date for e in evs})
             lines = [f"✅ Распознано событий: {len(evs)} ({', '.join(fmt_date(d) for d in days)})"]

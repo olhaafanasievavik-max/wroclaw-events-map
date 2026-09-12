@@ -64,6 +64,15 @@ async def resolve(client, ref: str):
     return await client.get_entity(ref)
 
 
+def post_url(chat, msg_id: int) -> str | None:
+    """Публичный канал -> t.me/имя/id, закрытый -> t.me/c/<id>/<msg> (открывается у участников)."""
+    if getattr(chat, "username", None):
+        return f"https://t.me/{chat.username}/{msg_id}"
+    if getattr(chat, "id", None):
+        return f"https://t.me/c/{chat.id}/{msg_id}"
+    return None
+
+
 async def fetch():
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
     client = TelegramClient(StringSession(os.environ["TG_SESSION"]), int(os.environ["TG_API_ID"]), os.environ["TG_API_HASH"])
@@ -84,10 +93,13 @@ async def fetch():
             async for msg in client.iter_messages(chat, min_id=last, limit=200 if last else 30):
                 if not msg.raw_text:   # raw_text: без markdown-разметки (**жирный** и т.п.)
                     continue
-                src = title
-                if getattr(msg, "forward", None) and msg.forward and getattr(msg.forward, "chat", None):
-                    src = getattr(msg.forward.chat, "title", src)  # пересланное: помним исходный канал
-                new.append({"id": f"{key}_{msg.id}", "date": msg.date.isoformat(), "source": src, "text": msg.raw_text})
+                src, url = title, post_url(chat, msg.id)
+                fwd = getattr(msg, "forward", None)
+                if fwd and getattr(fwd, "chat", None):          # пересланное: помним исходный канал и пост
+                    src = getattr(fwd.chat, "title", src)
+                    if fwd.channel_post:
+                        url = post_url(fwd.chat, fwd.channel_post)
+                new.append({"id": f"{key}_{msg.id}", "date": msg.date.isoformat(), "source": src, "text": msg.raw_text, "url": url})
                 state[key] = max(state.get(key, 0), msg.id)
             for m in reversed(new):
                 out.write(json.dumps(m, ensure_ascii=False) + "\n")
