@@ -10,15 +10,15 @@
 <style>
   :root{
     --bg:#fbf9f4; --panel:#ffffff; --ink:#2b2a27; --muted:#77736b; --line:#e6e1d6;
-    --accent:#c9663b; --accent-soft:#f6e3d8; --chip:#f1ede4;
+    --accent:#c9663b; --accent-soft:#f6e3d8; --chip:#f1ede4; --bar:#e9c9b5; --bar-dim:#efece6;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
   #app{display:flex;flex-direction:column;height:100%}
-  header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
+  header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
   header h1{font-size:17px;margin:0 12px 0 0;font-weight:650;white-space:nowrap}
-  .dates{display:flex;gap:6px;flex-wrap:wrap;flex:1}
-  .chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:14px;white-space:nowrap}
+  .dates{display:flex;gap:6px;flex-wrap:nowrap;flex:1;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px;min-width:0}
+  .chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:14px;white-space:nowrap;color:var(--ink)}
   .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .chip .n{opacity:.65;font-size:12px;margin-left:4px}
   .chip.archive{background:#fff;border-style:dashed}
@@ -26,9 +26,37 @@
   .chip.past{opacity:.7}
   .chip.past.active{opacity:1}
   input[type=date]{border:1px solid var(--line);border-radius:8px;padding:5px 8px;font:inherit;background:var(--panel);color:var(--ink)}
+
+  /* ---- временная шкала ---- */
+  #tl{background:var(--panel);border-bottom:1px solid var(--line);padding:6px 12px 4px}
+  .tl-head{display:flex;align-items:center;gap:10px;flex-wrap:nowrap}
+  .tl-head .tbtn{border:none;background:none;cursor:pointer;font:inherit;font-size:14px;color:var(--ink);padding:2px 0;white-space:nowrap}
+  .tl-head input[type=range]{flex:1;min-width:80px;accent-color:var(--accent)}
+  .tl-head .tlabel{font-size:13px;color:var(--muted);white-space:nowrap;min-width:92px}
+  .tl-head .clear{border:1px solid var(--line);background:var(--chip);border-radius:999px;font:inherit;font-size:12px;padding:2px 8px;cursor:pointer;color:var(--ink)}
+  .tl-body{position:relative;margin-top:6px;max-height:150px;overflow-y:auto;overflow-x:hidden}
+  .tl-axis{position:relative;height:16px;font-size:11px;color:var(--muted)}
+  .tl-axis span{position:absolute;transform:translateX(-50%)}
+  .tl-grid{position:absolute;top:16px;bottom:0;border-left:1px dashed var(--line);width:0}
+  .tl-row{position:relative;height:20px;margin:2px 0}
+  .tl-bar{position:absolute;top:0;height:18px;border-radius:5px;background:var(--bar);font-size:12px;line-height:18px;padding:0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-width:22px}
+  .tl-bar:hover,.tl-bar.hl{background:var(--accent);color:#fff}
+  .tl-bar.dim{background:var(--bar-dim);color:var(--muted)}
+  .tl-bar.open{background:transparent;border:1px dashed var(--muted);color:var(--muted)}
+  .tl-cursor{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none;z-index:2}
+  .tl-cursor::after{content:attr(data-t);position:absolute;top:0;left:4px;font-size:11px;color:var(--accent);font-weight:600}
+  #tl.closed .tl-body{display:none}
+
+  /* ---- карта и список ---- */
   #main{flex:1;display:flex;min-height:0}
   #map{flex:1;min-height:0}
-  aside{width:340px;max-width:45vw;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:8px}
+  aside{width:340px;max-width:45vw;display:flex;flex-direction:column;background:var(--panel);border-left:1px solid var(--line);min-height:0}
+  .lhead{display:flex;align-items:center;justify-content:space-between;padding:6px 8px 6px 12px;border-bottom:1px solid var(--line);color:var(--muted);font-size:13px;flex:none}
+  .lhead .arrow{border:1px solid var(--line);background:var(--chip);border-radius:8px;width:30px;height:26px;cursor:pointer;font-size:13px;color:var(--ink)}
+  .lbody{overflow:auto;padding:8px;flex:1}
+  aside.collapsed{width:44px}
+  aside.collapsed .lhead{justify-content:center;padding:6px}
+  aside.collapsed .lhead .sum,aside.collapsed .lbody{display:none}
   .card{padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;background:#fff}
   .card:hover,.card.hl{border-color:var(--accent);background:var(--accent-soft)}
   .card .t{font-weight:600}
@@ -41,28 +69,32 @@
   .leaflet-tooltip.ev b{display:block;margin-bottom:2px}
   .leaflet-tooltip.ev .d{color:#555;margin-top:4px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
   .leaflet-tooltip.ev .more{color:#999;font-size:12px;margin-top:2px}
-  .leaflet-popup-content{margin:12px 14px;max-width:340px;max-height:min(50vh,420px);overflow:auto;font:14px/1.4 system-ui,sans-serif}
+  .leaflet-popup-content{margin:12px 14px;max-width:340px;max-height:min(46vh,400px);overflow:auto;font:14px/1.4 system-ui,sans-serif}
   .pp{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
   .pp:last-child{border:none;margin:0;padding:0}
   .pp .t{font-weight:650;font-size:15px}
   .pp .ru{color:var(--muted)}
   .pp .m{color:var(--muted);font-size:13px;margin:2px 0}
   .pp .m a{color:var(--accent)}
-  .pp .desc{margin:6px 0;white-space:pre-line}
-  .pp .desc.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-  .pp .toggle{background:none;border:none;color:var(--accent);cursor:pointer;padding:0;font:inherit;font-size:13px}
+  /* описание: фиксированная высота, внутри прокрутка */
+  .pp .desc{margin:6px 0;white-space:pre-line;max-height:8.5em;overflow-y:auto;padding-right:4px}
   .btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
   .btn{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:5px 9px;font-size:13px;cursor:pointer;color:var(--ink);text-decoration:none}
   .btn:hover{border-color:var(--accent);background:var(--accent-soft)}
   .empty{color:var(--muted);padding:20px;text-align:center}
+
   @media (max-width:760px){
     header{flex-wrap:nowrap}
     header h1{font-size:15px;margin-right:6px}
-    .dates{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+    .dates{scrollbar-width:none}
     .dates::-webkit-scrollbar{display:none}
     input[type=date]{display:none}
+    .tl-body{max-height:110px}
     #main{flex-direction:column}
     aside{width:auto;max-width:none;height:38vh;border-left:none;border-top:1px solid var(--line)}
+    aside.collapsed{width:auto;height:auto}
+    aside.collapsed .lhead{justify-content:space-between;padding:6px 8px 6px 12px}
+    aside.collapsed .lhead .sum{display:inline}
   }
 </style>
 </head>
@@ -73,9 +105,23 @@
     <div class="dates" id="dates"></div>
     <input type="date" id="datePick" title="Другая дата">
   </header>
+
+  <div id="tl">
+    <div class="tl-head">
+      <button class="tbtn" id="tlToggle" onclick="toggleTl()" title="Свернуть/развернуть шкалу">🕒 ▾</button>
+      <input type="range" id="tslider" min="360" max="1560" step="30" value="1140" title="Что идёт в это время">
+      <span class="tlabel" id="tlabel">всё время</span>
+      <button class="clear" id="tclear" onclick="clearTime()" hidden>✕ сброс</button>
+    </div>
+    <div class="tl-body" id="tlBody"></div>
+  </div>
+
   <div id="main">
     <div id="map"></div>
-    <aside id="list"></aside>
+    <aside id="list">
+      <div class="lhead"><span class="sum" id="lsum"></span><button class="arrow" id="ltoggle" onclick="toggleList()" title="Свернуть/развернуть список">▾</button></div>
+      <div class="lbody" id="lbody"></div>
+    </aside>
   </div>
 </div>
 
@@ -87,6 +133,9 @@ if (TG){ TG.ready(); TG.expand(); document.addEventListener('click', ev => { con
 const WEEK = ['вс','пн','вт','ср','чт','пт','сб'];
 const MON = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
 let EVENTS = [], byDate = new Map(), current = null, markers = [], markerByKey = new Map();
+let timeAt = null;                       // фильтр «что идёт в …», минуты от полуночи или null
+const T0 = 360, T1 = 1560;               // шкала 06:00 → 02:00 следующего дня
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
 
 const map = L.map('map', {zoomControl:true}).setView([51.11, 17.03], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -96,6 +145,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmtDate = iso => { const d = new Date(iso+'T00:00'); return `${WEEK[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`; };
 const timeStr = e => e.time_start ? (e.time_end ? `${e.time_start}–${e.time_end}` : e.time_start) : 'время не указано';
+const pad = n => String(n).padStart(2,'0');
+const mins = t => { const [h,m] = t.split(':').map(Number); return h*60+m; };
+const hhmm = m => `${pad(Math.floor(m/60)%24)}:${pad(m%60)}`;
+// интервал события в минутах на шкале дня (конец после полуночи -> +24ч; без конца -> +2ч)
+function span(e){
+  if (!e.time_start) return null;
+  const s = mins(e.time_start); let en = e.time_end ? mins(e.time_end) : s + 120;
+  if (en <= s) en += 1440;
+  return [s, en];
+}
+const activeAt = (e, t) => { const sp = span(e); return !sp || (sp[0] <= t && t < sp[1]); };
 
 // ---- календарь ----
 function range(e){
@@ -108,13 +168,11 @@ function range(e){
   } else end = new Date(start.getTime() + 2*3600e3);
   return [start, end];
 }
-const pad = n => String(n).padStart(2,'0');
 const local = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
 const dayTag = e => e.day_count > 1 ? ` (${e.day_index} из ${e.day_count})` : '';
-// перевод показываем, только если он действительно отличается от оригинала (не просто другое тире)
 const norm = s => (s||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
 const hasRu = e => e.title_ru && norm(e.title_ru) !== norm(e.title);
-const shown = e => e.title + dayTag(e);                       // название с «(2 из 3)»
+const shown = e => e.title + dayTag(e);
 function title(e){ return (hasRu(e) ? `${e.title} (${e.title_ru})` : e.title) + dayTag(e); }
 const metaLine = e => `🕒 ${esc(timeStr(e))}${e.recurrence ? ' · 🔁 ' + esc(e.recurrence) : ''}`;
 function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source + (e.url ? ' ' + e.url : '') : ''].filter(Boolean).join('\n\n'); }
@@ -138,37 +196,77 @@ function downloadIcs(idx){
   document.body.appendChild(a); a.click(); a.remove();
 }
 
-// ---- рендер ----
+// ---- карточки ----
 function eventHtml(e, idx, full){
   const h = `<div class="t">${esc(e.emoji)} ${esc(shown(e))}</div>` +
     (hasRu(e) ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
     `<div class="m">${metaLine(e)} · 📍 ${esc(e.address)}</div>`;
   if (!full) return h;
-  const long = (e.description || '').length > 260;
-  return h + (e.description ? `<div class="desc${long ? ' clamp' : ''}" id="d${idx}">${esc(e.description)}</div>` +
-      (long ? `<button class="toggle" onclick="toggleDesc(${idx}, this)">Читать дальше ▾</button>` : '') : '') +
+  return h + (e.description ? `<div class="desc">${esc(e.description)}</div>` : '') +
     (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') + sourceHtml(e) +
     `<div class="btns"><a class="btn" target="_blank" rel="noopener" href="${gcalUrl(e)}">📅 Google Calendar</a>` +
     `<button class="btn" onclick="downloadIcs(${idx})">⬇ .ics</button>` +
     `<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.address + ', Wrocław')}">🗺 Маршрут</a></div>`;
 }
 
-function show(dateIso){
+// ---- временная шкала ----
+const pct = m => Math.min(100, Math.max(0, (m - T0) / (T1 - T0) * 100));
+function renderTimeline(evs){
+  const body = document.getElementById('tlBody');
+  let html = '<div class="tl-axis">';
+  for (let m = T0; m <= T1; m += 120) html += `<span style="left:${pct(m)}%">${Math.floor(m/60)%24}</span><div class="tl-grid" style="left:${pct(m)}%"></div>`;
+  html += '</div>';
+  const withTime = evs.filter(i => span(EVENTS[i])).sort((a,b) => span(EVENTS[a])[0] - span(EVENTS[b])[0]);
+  const noTime = evs.filter(i => !span(EVENTS[i]));
+  withTime.forEach(i => { const e = EVENTS[i], [s,en] = span(e);
+    const l = pct(s), w = Math.max(1.8, pct(Math.min(en, T1)) - l);
+    const dim = timeAt != null && !activeAt(e, timeAt);
+    html += `<div class="tl-row"><div class="tl-bar${dim ? ' dim' : ''}" id="b${i}" style="left:${l}%;width:${w}%" onclick="focusEv(${i})" title="${esc(timeStr(e))} ${esc(shown(e))}">${esc(e.emoji)} ${esc(e.title)}</div></div>`; });
+  noTime.forEach(i => { const e = EVENTS[i];
+    html += `<div class="tl-row"><div class="tl-bar open" style="left:0;width:100%" onclick="focusEv(${i})">${esc(e.emoji)} ${esc(e.title)} · время не указано</div></div>`; });
+  if (timeAt != null) html += `<div class="tl-cursor" style="left:${pct(timeAt)}%" data-t="${hhmm(timeAt)}"></div>`;
+  body.innerHTML = html;
+}
+function setTime(v){
+  timeAt = v;
+  document.getElementById('tlabel').textContent = v == null ? 'всё время' : `в ${hhmm(v)}`;
+  document.getElementById('tclear').hidden = v == null;
+  if (v != null) document.getElementById('tslider').value = v;
+  show(current, true);
+}
+function clearTime(){ setTime(null); }
+function toggleTl(){
+  const closed = document.getElementById('tl').classList.toggle('closed');
+  document.getElementById('tlToggle').textContent = closed ? '🕒 ▸' : '🕒 ▾';
+  store.set('tlClosed', closed ? '1' : '');
+  map.invalidateSize();
+}
+function toggleList(){
+  const c = document.getElementById('list').classList.toggle('collapsed');
+  document.getElementById('ltoggle').textContent = c ? '▴' : '▾';
+  store.set('listCollapsed', c ? '1' : '');
+  map.invalidateSize();
+}
+
+// ---- показ дня ----
+function show(dateIso, keepView){
   current = dateIso;
   document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.d === dateIso));
   document.getElementById('datePick').value = dateIso;
   const chipEl = document.querySelector(`.chip[data-d="${dateIso}"]`); if (chipEl) chipEl.scrollIntoView({block:'nearest', inline:'nearest'});
   markers.forEach(m => m.remove()); markers = []; markerByKey.clear();
-  const evs = byDate.get(dateIso) || [];
-  const list = document.getElementById('list');
-  if (!evs.length){ list.innerHTML = `<div class="empty">На ${fmtDate(dateIso)} событий нет</div>`; return; }
+  const all = byDate.get(dateIso) || [];
+  const evs = timeAt == null ? all : all.filter(i => activeAt(EVENTS[i], timeAt));
+  renderTimeline(all);
+  const lsum = document.getElementById('lsum'), lbody = document.getElementById('lbody');
+  lsum.textContent = `${fmtDate(dateIso)} · ${evs.length} событий` + (timeAt != null ? ` в ${hhmm(timeAt)}` : '');
+  if (!evs.length){ lbody.innerHTML = `<div class="empty">${timeAt == null ? `На ${fmtDate(dateIso)} событий нет` : `В ${hhmm(timeAt)} ничего не идёт`}</div>`; return; }
 
-  // группируем по точке: несколько событий в одном месте -> одна метка
   const groups = new Map();
   evs.forEach(i => { const e = EVENTS[i]; if (e.lat == null) return;
     const k = e.lat.toFixed(5)+','+e.lon.toFixed(5); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
   const bounds = [];
-  groups.forEach((idxs, k) => {
+  groups.forEach(idxs => {
     const e0 = EVENTS[idxs[0]];
     const icon = L.divIcon({className:'', iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-12],
       html:`<div class="emoji-pin">${esc(e0.emoji || '📍')}${idxs.length>1 ? `<span class="cnt">${idxs.length}</span>` : ''}</div>`});
@@ -178,45 +276,47 @@ function show(dateIso){
              (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.description && e.description.length > 220 ? '<div class="more">… нажмите, чтобы прочитать полностью</div>' : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
       {className:'ev', direction:'top', offset:[0,-10], sticky:false});
     m.bindPopup(idxs.map(i => `<div class="pp">${eventHtml(EVENTS[i], i, true)}</div>`).join(''), {maxWidth:360});
-    m.on('mouseover', () => idxs.forEach(i => document.getElementById('c'+i)?.classList.add('hl')));
-    m.on('mouseout',  () => idxs.forEach(i => document.getElementById('c'+i)?.classList.remove('hl')));
+    const hl = on => idxs.forEach(i => { document.getElementById('c'+i)?.classList.toggle('hl', on); document.getElementById('b'+i)?.classList.toggle('hl', on); });
+    m.on('mouseover', () => hl(true)); m.on('mouseout', () => hl(false));
     markers.push(m); idxs.forEach(i => markerByKey.set(i, m)); bounds.push([e0.lat, e0.lon]);
   });
   map.invalidateSize();
-  if (bounds.length) map.fitBounds(bounds, {padding:[40,40], maxZoom:15, animate:false});
+  if (bounds.length && !keepView) map.fitBounds(bounds, {padding:[40,40], maxZoom:15, animate:false});
 
-  list.innerHTML = `<div class="m" style="padding:4px 6px 8px;color:var(--muted)">${fmtDate(dateIso)} · ${evs.length} событий</div>` +
-    evs.map(i => { const e = EVENTS[i];
-      return `<div class="card${e.lat==null?' nogeo':''}" id="c${i}" onclick="focusEv(${i})">${eventHtml(e, i, false)}${e.lat==null?'<div class="m">⚠ адрес не найден на карте</div>':''}</div>`; }).join('');
-}
-function toggleDesc(i, btn){
-  const d = document.getElementById('d'+i); const open = d.classList.toggle('clamp');
-  btn.textContent = open ? 'Читать дальше ▾' : 'Свернуть ▴';
+  lbody.innerHTML = evs.map(i => { const e = EVENTS[i];
+    return `<div class="card${e.lat==null?' nogeo':''}" id="c${i}" onclick="focusEv(${i})">${eventHtml(e, i, false)}${e.lat==null?'<div class="m">⚠ адрес не найден на карте</div>':''}</div>`; }).join('');
 }
 function focusEv(i){
-  const m = markerByKey.get(i); if (!m) return;
+  const m = markerByKey.get(i);
+  if (!m){ if (timeAt != null){ setTime(null); return focusEv(i); } return; }   // событие скрыто фильтром времени
   map.setView(m.getLatLng(), Math.max(map.getZoom(), 15)); m.openPopup();
+  document.getElementById('c'+i)?.scrollIntoView({block:'nearest'});
 }
 
 function todayIso(){ return new Date().toLocaleDateString('sv', {timeZone: TZ}); }
 
+// ---- лента дат: архив слева, сегодня первым ----
 let archiveOpen = false;
 function chip(d, cls=''){ const n = (byDate.get(d)||[]).length; return `<button class="chip ${cls}" data-d="${d}" onclick="show('${d}')">${fmtDate(d)}<span class="n">${n}</span></button>`; }
 function renderDates(){
   const t = todayIso(), all = [...byDate.keys()].sort();
   const past = all.filter(d => d < t), future = all.filter(d => d >= t);
-  if (!byDate.has(t)) future.unshift(t);                       // сегодня показываем всегда, даже без событий
+  if (!byDate.has(t)) future.unshift(t);
   const box = document.getElementById('dates');
   box.innerHTML =
     (past.length ? `<button class="chip archive${archiveOpen ? ' open' : ''}" onclick="toggleArchive()">📁 ${archiveOpen ? 'Скрыть архив' : 'Архив'}<span class="n">${past.length}</span></button>` : '') +
     (archiveOpen ? past.map(d => chip(d, 'past')).join('') : '') +
     future.map(d => chip(d)).join('');
   document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.d === current));
-  // по умолчанию первым видим сегодняшний день; архив остаётся слева, к нему скролл влево
   const todayChip = box.querySelector(`.chip[data-d="${t}"]`);
   box.scrollLeft = archiveOpen || !todayChip ? 0 : todayChip.offsetLeft - box.offsetLeft;
 }
 function toggleArchive(){ archiveOpen = !archiveOpen; renderDates(); }
+
+// ---- старт ----
+if (store.get('tlClosed')) { document.getElementById('tl').classList.add('closed'); document.getElementById('tlToggle').textContent = '🕒 ▸'; }
+if (store.get('listCollapsed')) { document.getElementById('list').classList.add('collapsed'); document.getElementById('ltoggle').textContent = '▴'; }
+document.getElementById('tslider').addEventListener('input', ev => setTime(Number(ev.target.value)));
 
 fetch('events.json?' + Date.now()).then(r => r.json()).then(data => {
   EVENTS = data.events;
