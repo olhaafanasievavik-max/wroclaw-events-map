@@ -21,6 +21,10 @@
   .chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:14px;white-space:nowrap}
   .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
   .chip .n{opacity:.65;font-size:12px;margin-left:4px}
+  .chip.archive{background:#fff;border-style:dashed}
+  .chip.archive.open{border-style:solid}
+  .chip.past{opacity:.7}
+  .chip.past.active{opacity:1}
   input[type=date]{border:1px solid var(--line);border-radius:8px;padding:5px 8px;font:inherit;background:var(--panel);color:var(--ink)}
   #main{flex:1;display:flex;min-height:0}
   #map{flex:1;min-height:0}
@@ -151,6 +155,7 @@ function show(dateIso){
   current = dateIso;
   document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.d === dateIso));
   document.getElementById('datePick').value = dateIso;
+  const chipEl = document.querySelector(`.chip[data-d="${dateIso}"]`); if (chipEl) chipEl.scrollIntoView({block:'nearest', inline:'nearest'});
   markers.forEach(m => m.remove()); markers = []; markerByKey.clear();
   const evs = byDate.get(dateIso) || [];
   const list = document.getElementById('list');
@@ -193,16 +198,33 @@ function focusEv(i){
 
 function todayIso(){ return new Date().toLocaleDateString('sv', {timeZone: TZ}); }
 
+let archiveOpen = false;
+function chip(d, cls=''){ const n = (byDate.get(d)||[]).length; return `<button class="chip ${cls}" data-d="${d}" onclick="show('${d}')">${fmtDate(d)}<span class="n">${n}</span></button>`; }
+function renderDates(){
+  const t = todayIso(), all = [...byDate.keys()].sort();
+  const past = all.filter(d => d < t), future = all.filter(d => d >= t);
+  if (!byDate.has(t)) future.unshift(t);                       // сегодня показываем всегда, даже без событий
+  const box = document.getElementById('dates');
+  box.innerHTML =
+    (past.length ? `<button class="chip archive${archiveOpen ? ' open' : ''}" onclick="toggleArchive()">📁 ${archiveOpen ? 'Скрыть архив' : 'Архив'}<span class="n">${past.length}</span></button>` : '') +
+    (archiveOpen ? past.map(d => chip(d, 'past')).join('') : '') +
+    future.map(d => chip(d)).join('');
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.d === current));
+  // по умолчанию первым видим сегодняшний день; архив остаётся слева, к нему скролл влево
+  const todayChip = box.querySelector(`.chip[data-d="${t}"]`);
+  box.scrollLeft = archiveOpen || !todayChip ? 0 : todayChip.offsetLeft - box.offsetLeft;
+}
+function toggleArchive(){ archiveOpen = !archiveOpen; renderDates(); }
+
 fetch('events.json?' + Date.now()).then(r => r.json()).then(data => {
   EVENTS = data.events;
   EVENTS.forEach((e, i) => { if (!byDate.has(e.date)) byDate.set(e.date, []); byDate.get(e.date).push(i); });
   const dates = [...byDate.keys()].sort();
-  const box = document.getElementById('dates');
-  box.innerHTML = dates.map(d => `<button class="chip" data-d="${d}" onclick="show('${d}')">${fmtDate(d)}<span class="n">${byDate.get(d).length}</span></button>`).join('');
-  document.getElementById('datePick').onchange = ev => show(ev.target.value);
+  document.getElementById('datePick').onchange = ev => { const d = ev.target.value; if (d < todayIso() && !archiveOpen){ archiveOpen = true; } show(d); renderDates(); };
   window.addEventListener('resize', () => map.invalidateSize());
   const t = todayIso();
-  show(byDate.has(t) ? t : (dates.find(d => d >= t) || dates[dates.length-1] || t));
+  show(byDate.has(t) ? t : (dates.find(d => d >= t) || t));
+  renderDates();
 });
 </script>
 </body>
