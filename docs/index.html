@@ -35,14 +35,17 @@
   .emoji-pin .cnt{position:absolute;top:-6px;right:-8px;background:var(--accent);color:#fff;border-radius:999px;font-size:11px;padding:1px 5px;font-weight:600}
   .leaflet-tooltip.ev{max-width:320px;white-space:normal;padding:8px 10px;border-radius:8px;font:13px/1.35 system-ui,sans-serif}
   .leaflet-tooltip.ev b{display:block;margin-bottom:2px}
-  .leaflet-tooltip.ev .d{color:#555;margin-top:4px}
-  .leaflet-popup-content{margin:12px 14px;max-width:340px;font:14px/1.4 system-ui,sans-serif}
+  .leaflet-tooltip.ev .d{color:#555;margin-top:4px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+  .leaflet-tooltip.ev .more{color:#999;font-size:12px;margin-top:2px}
+  .leaflet-popup-content{margin:12px 14px;max-width:340px;max-height:min(50vh,420px);overflow:auto;font:14px/1.4 system-ui,sans-serif}
   .pp{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
   .pp:last-child{border:none;margin:0;padding:0}
   .pp .t{font-weight:650;font-size:15px}
   .pp .ru{color:var(--muted)}
   .pp .m{color:var(--muted);font-size:13px;margin:2px 0}
-  .pp .desc{margin:6px 0}
+  .pp .desc{margin:6px 0;white-space:pre-line}
+  .pp .desc.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+  .pp .toggle{background:none;border:none;color:var(--accent);cursor:pointer;padding:0;font:inherit;font-size:13px}
   .btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
   .btn{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:5px 9px;font-size:13px;cursor:pointer;color:var(--ink);text-decoration:none}
   .btn:hover{border-color:var(--accent);background:var(--accent-soft)}
@@ -135,7 +138,9 @@ function eventHtml(e, idx, full){
     (hasRu(e) ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
     `<div class="m">${metaLine(e)} · 📍 ${esc(e.address)}</div>`;
   if (!full) return h;
-  return h + (e.description ? `<div class="desc">${esc(e.description)}</div>` : '') +
+  const long = (e.description || '').length > 260;
+  return h + (e.description ? `<div class="desc${long ? ' clamp' : ''}" id="d${idx}">${esc(e.description)}</div>` +
+      (long ? `<button class="toggle" onclick="toggleDesc(${idx}, this)">Читать дальше ▾</button>` : '') : '') +
     (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') +
     `<div class="btns"><a class="btn" target="_blank" rel="noopener" href="${gcalUrl(e)}">📅 Google Calendar</a>` +
     `<button class="btn" onclick="downloadIcs(${idx})">⬇ .ics</button>` +
@@ -163,7 +168,7 @@ function show(dateIso){
     const m = L.marker([e0.lat, e0.lon], {icon}).addTo(map);
     m.bindTooltip(idxs.map(i => { const e = EVENTS[i];
       return `<b>${esc(e.emoji)} ${esc(shown(e))}${hasRu(e) ? ' · ' + esc(e.title_ru) : ''}</b>${metaLine(e)}` +
-             (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
+             (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.description && e.description.length > 220 ? '<div class="more">… нажмите, чтобы прочитать полностью</div>' : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
       {className:'ev', direction:'top', offset:[0,-10], sticky:false});
     m.bindPopup(idxs.map(i => `<div class="pp">${eventHtml(EVENTS[i], i, true)}</div>`).join(''), {maxWidth:360});
     m.on('mouseover', () => idxs.forEach(i => document.getElementById('c'+i)?.classList.add('hl')));
@@ -176,6 +181,10 @@ function show(dateIso){
   list.innerHTML = `<div class="m" style="padding:4px 6px 8px;color:var(--muted)">${fmtDate(dateIso)} · ${evs.length} событий</div>` +
     evs.map(i => { const e = EVENTS[i];
       return `<div class="card${e.lat==null?' nogeo':''}" id="c${i}" onclick="focusEv(${i})">${eventHtml(e, i, false)}${e.lat==null?'<div class="m">⚠ адрес не найден на карте</div>':''}</div>`; }).join('');
+}
+function toggleDesc(i, btn){
+  const d = document.getElementById('d'+i); const open = d.classList.toggle('clamp');
+  btn.textContent = open ? 'Читать дальше ▾' : 'Свернуть ▴';
 }
 function focusEv(i){
   const m = markerByKey.get(i); if (!m) return;
