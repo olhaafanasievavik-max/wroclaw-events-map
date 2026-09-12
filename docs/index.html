@@ -103,8 +103,11 @@ function range(e){
 const pad = n => String(n).padStart(2,'0');
 const local = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
 const dayTag = e => e.day_count > 1 ? ` (${e.day_index} из ${e.day_count})` : '';
+// перевод показываем, только если он действительно отличается от оригинала (не просто другое тире)
+const norm = s => (s||'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+const hasRu = e => e.title_ru && norm(e.title_ru) !== norm(e.title);
 const shown = e => e.title + dayTag(e);                       // название с «(2 из 3)»
-function title(e){ return (e.title_ru && e.title_ru !== e.title ? `${e.title} (${e.title_ru})` : e.title) + dayTag(e); }
+function title(e){ return (hasRu(e) ? `${e.title} (${e.title_ru})` : e.title) + dayTag(e); }
 const metaLine = e => `🕒 ${esc(timeStr(e))}${e.recurrence ? ' · 🔁 ' + esc(e.recurrence) : ''}`;
 function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source : ''].filter(Boolean).join('\n\n'); }
 function gcalUrl(e){
@@ -129,7 +132,7 @@ function downloadIcs(idx){
 // ---- рендер ----
 function eventHtml(e, idx, full){
   const h = `<div class="t">${esc(e.emoji)} ${esc(shown(e))}</div>` +
-    (e.title_ru && e.title_ru !== e.title ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
+    (hasRu(e) ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
     `<div class="m">${metaLine(e)} · 📍 ${esc(e.address)}</div>`;
   if (!full) return h;
   return h + (e.description ? `<div class="desc">${esc(e.description)}</div>` : '') +
@@ -159,7 +162,7 @@ function show(dateIso){
       html:`<div class="emoji-pin">${esc(e0.emoji || '📍')}${idxs.length>1 ? `<span class="cnt">${idxs.length}</span>` : ''}</div>`});
     const m = L.marker([e0.lat, e0.lon], {icon}).addTo(map);
     m.bindTooltip(idxs.map(i => { const e = EVENTS[i];
-      return `<b>${esc(e.emoji)} ${esc(shown(e))}${e.title_ru && e.title_ru !== e.title ? ' · ' + esc(e.title_ru) : ''}</b>${metaLine(e)}` +
+      return `<b>${esc(e.emoji)} ${esc(shown(e))}${hasRu(e) ? ' · ' + esc(e.title_ru) : ''}</b>${metaLine(e)}` +
              (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
       {className:'ev', direction:'top', offset:[0,-10], sticky:false});
     m.bindPopup(idxs.map(i => `<div class="pp">${eventHtml(EVENTS[i], i, true)}</div>`).join(''), {maxWidth:360});
