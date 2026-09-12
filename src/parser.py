@@ -39,6 +39,20 @@ WEEKDAYS = {
     "понедельник": 0, "вторник": 1, "среда": 2, "четверг": 3, "пятница": 4, "суббота": 5, "воскресенье": 6,
     "понеділок": 0, "вівторок": 1, "середа": 2, "четвер": 3, "п'ятниця": 4, "субота": 5, "неділя": 6,
 }
+# Повторяющиеся события: «по субботам и воскресеньям», «по выходным», «ежедневно»
+RECUR_HORIZON_DAYS = 56   # без даты окончания расписываем на 8 недель вперёд
+RECUR_WORDS = [
+    (r"ежедневно|каждый день|щодня|codziennie", set(range(7)), "ежедневно"),
+    (r"по выходным|каждые выходные|у вихідні|щовихідних", {5, 6}, "по выходным"),
+    (r"по будням|у будні", {0, 1, 2, 3, 4}, "по будням"),
+]
+RECUR_DAY_RE = re.compile(
+    r"(?:по|кажд\w+|що)\s*(понедельник|вторник|сред|четверг|пятниц|суббот|воскресень|"
+    r"понеділ|вівтор|серед|четвер|п['’]ятниц|субот|неділ)\w*", re.I)
+RECUR_DAY_MAP = {"понедельник": 0, "вторник": 1, "сред": 2, "четверг": 3, "пятниц": 4, "суббот": 5, "воскресень": 6,
+                 "понеділ": 0, "вівтор": 1, "серед": 2, "четвер": 3, "п'ятниц": 4, "п’ятниц": 4, "субот": 5, "неділ": 6}
+RECUR_DAY_LABEL = ["по понедельникам", "по вторникам", "по средам", "по четвергам", "по пятницам", "по субботам", "по воскресеньям"]
+UNTIL_RE = re.compile(rf"(?:до|по|until)\s+(\d{{1,2}})\s+({MONTH_RE})", re.I)
 MD_BOLD_RE = re.compile(r"\*\*|__")
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 
@@ -72,7 +86,9 @@ class Event:
     lat: float | None = None
     lon: float | None = None
     geo_query: str | None = None  # какой запрос сработал в геокодере
-    extra_dates: list[str] = field(default_factory=list)
+    day_index: int = 1            # какой это день события: «(2 из 3)»
+    day_count: int = 1
+    recurrence: str | None = None  # «по субботам и воскресеньям», если событие повторяется
 
     def key(self) -> tuple:
         return (self.date, self.title.lower().strip(), self.address.lower().strip())
@@ -164,6 +180,43 @@ def _message_dates(text: str, ref: date) -> list[date]:
     return []
 
 
+def _recurrence(text: str) -> tuple[set[int], str] | None:
+    """«По субботам и воскресеньям» -> ({5, 6}, «по субботам и воскресеньям»)."""
+    low = text.lower()
+    for pat, days, label in RECUR_WORDS:
+        if re.search(pat, low):
+            return days, label
+    if not RECUR_DAY_RE.search(low):
+        return None
+    # «по субботам и воскресеньям»: после «по» перечислены все дни, собираем их без префикса
+    days = set()
+    for m in re.finditer(r"\b(понедельник|вторник|сред(?=ам|у|ы)|четверг|пятниц|суббот|воскресень|"
+                         r"понеділ|вівтор|серед(?=ам|у|и)|четвер|п['’]ятниц|субот|неділ)", low):
+        stem = m.group(1).replace("’", "'")
+        if stem in RECUR_DAY_MAP:
+            days.add(RECUR_DAY_MAP[stem])
+    if not days:
+        return None
+    labels = [RECUR_DAY_LABEL[d] for d in sorted(days)]
+    label = labels[0] if len(labels) == 1 else ", ".join(l for l in labels[:-1]) + " и " + labels[-1].split(" ", 1)[1]
+    return days, label
+
+
+def _expand_recurrence(dates: list[date], weekdays: set[int], text: str, ref: date) -> list[date]:
+    """Расписываем повторяющееся событие по дням: от старта до «до 30 сентября» или на 8 недель."""
+    start = min(dates) if dates else ref
+    m = UNTIL_RE.search(text)
+    end = _resolve_year(int(m.group(1)), MONTHS[m.group(2).lower()], ref) if m else start + timedelta(days=RECUR_HORIZON_DAYS)
+    if len(dates) > 1:                # «5-30 сентября, по выходным»
+        return [d for d in dates if d.weekday() in weekdays]
+    out, cur = [], start
+    while cur <= end:
+        if cur.weekday() in weekdays:
+            out.append(cur)
+        cur += timedelta(days=1)
+    return out or dates
+
+
 def _split_blocks(text: str) -> list[list[str]]:
     blocks, cur = [], []
     for raw in text.splitlines():
@@ -245,6 +298,14 @@ def parse_message(text: str, msg_date: datetime | date, source: str = "", messag
             desc_parts.append(" ".join(blk))
         description = "\n".join(desc_parts).strip()
 
+        # повторяемость ищем только в служебных строках (⏰/🕘/📅), не в описании
+        recurrence = None
+        service_text = " ".join(" ".join(b) for b in marker_blocks)
+        rec = _recurrence(" ".join(time_lines) + " " + " ".join(l for b in marker_blocks for l in b if DATE_LINE_RE.match(l)))
+        if rec:
+            weekdays, recurrence = rec
+            dates = _expand_recurrence(dates, weekdays, service_text, ref)
+
         def time_for(d: date) -> tuple[str | None, str | None]:
             # несколько строк «⏰ Пятница - 16:00-01:00»: берём строку своего дня недели
             for tl in time_lines:
@@ -253,11 +314,12 @@ def parse_message(text: str, msg_date: datetime | date, source: str = "", messag
                         return _parse_time(tl)
             return _parse_time(time_lines[0]) if time_lines else (None, None)
 
-        for d in dates:
+        for i, d in enumerate(dates, start=1):
             t_start, t_end = time_for(d)
             events.append(Event(date=d.isoformat(), title=title, address=address, time_start=t_start,
                                 time_end=t_end, description=description, price=price or global_price,
-                                emoji=emoji, source=source, message_id=message_id))
+                                emoji=emoji, source=source, message_id=message_id,
+                                day_index=i, day_count=len(dates), recurrence=recurrence))
         return events
 
     # Форматы 1 и 2: много блоков с 📍
@@ -292,10 +354,11 @@ def parse_message(text: str, msg_date: datetime | date, source: str = "", messag
                 continue
             else:
                 desc.append(l)
-        for d in dates:
+        for i, d in enumerate(dates, start=1):
             events.append(Event(date=d.isoformat(), title=title, address=address, time_start=t_start,
                                 time_end=t_end, description=" ".join(desc), price=price or global_price,
-                                emoji=emoji, source=source, message_id=message_id))
+                                emoji=emoji, source=source, message_id=message_id,
+                                day_index=i, day_count=len(dates)))
     return events
 
 
@@ -366,12 +429,15 @@ def dedupe(events: list[Event]) -> list[Event]:
         merged = Event(**desc_src.to_dict())
         merged.title = title_src.title
         merged.emoji = title_src.emoji or merged.emoji
-        for f in ("time_end", "price", "title_ru"):
+        for f in ("time_end", "price", "title_ru", "recurrence"):
             if not getattr(merged, f):
                 for c in cands:
                     if getattr(c, f):
                         setattr(merged, f, getattr(c, f))
                         break
+        # нумерацию дней берём у самой длинной серии («2 из 3» важнее «1 из 1»)
+        longest = max(cands, key=lambda x: x.day_count)
+        merged.day_index, merged.day_count = longest.day_index, longest.day_count
         # другие названия сохраняем в описании, чтобы не потерять контекст
         others = [c.title for c in cands if c is not title_src and c.title.lower() != merged.title.lower()]
         if others:

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-12T09:20",
+ "generated": "2026-09-12T11:26",
  "events": [
   {
    "date": "2026-09-04",
@@ -16,7 +16,9 @@
    "lat": 51.109066,
    "lon": 17.032585,
    "geo_query": "Krupa Art Foundation",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -33,7 +35,9 @@
    "lat": 51.1066902,
    "lon": 17.0278672,
    "geo_query": "Wolności",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -50,7 +54,9 @@
    "lat": 51.1104299,
    "lon": 17.0302752,
    "geo_query": "Muzeum Pana Tadeusza",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -67,7 +73,9 @@
    "lat": 51.1079478,
    "lon": 17.024748,
    "geo_query": "Pawła Włodkowica 6",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -84,7 +92,9 @@
    "lat": 51.1093451,
    "lon": 17.0424516,
    "geo_query": "Bernardyńska 7",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -101,7 +111,9 @@
    "lat": 51.1154995,
    "lon": 17.0158574,
    "geo_query": "Zachodnia 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -118,7 +130,9 @@
    "lat": 51.0964161,
    "lon": 17.034822,
    "geo_query": "Sucha 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -135,7 +149,9 @@
    "lat": 51.1101035,
    "lon": 17.0325007,
    "geo_query": "Przejście Garncarskie 2",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -152,7 +168,9 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-04",
@@ -169,7 +187,9 @@
    "lat": 51.0957471,
    "lon": 17.0337714,
    "geo_query": "Pitlane Summer Bar",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -186,7 +206,9 @@
    "lat": 51.2613802,
    "lon": 17.0542087,
    "geo_query": "Pierwoszowska 2|Wisznia Mała",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   },
   {
    "date": "2026-09-05",
@@ -203,7 +225,9 @@
    "lat": 51.0967261,
    "lon": 17.0628487,
    "geo_query": "Na Niskich Łąkach 7",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -220,7 +244,9 @@
    "lat": 51.1051499,
    "lon": 17.087288,
    "geo_query": "Tramwajowa 1-3",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -237,7 +263,9 @@
    "lat": 51.1066902,
    "lon": 17.0278672,
    "geo_query": "Wolności",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -254,7 +282,9 @@
    "lat": 51.2052431,
    "lon": 16.9963066,
    "geo_query": "Lotnisko Wrocław-Szymanów",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -271,7 +301,9 @@
    "lat": 51.1239586,
    "lon": 17.0312744,
    "geo_query": "Park Staszica",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -288,7 +320,9 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -305,7 +339,9 @@
    "lat": 51.0879515,
    "lon": 17.0154459,
    "geo_query": "Sztabowa 62-66",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -322,7 +358,9 @@
    "lat": 51.1069642,
    "lon": 17.0278621,
    "geo_query": "Wolności 7a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-05",
@@ -339,7 +377,28 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
+  },
+  {
+   "date": "2026-09-06",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 2,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   },
   {
    "date": "2026-09-06",
@@ -356,7 +415,9 @@
    "lat": 51.1084171,
    "lon": 17.074924,
    "geo_query": "Wystawowa 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -373,7 +434,9 @@
    "lat": 51.1497016,
    "lon": 17.1117816,
    "geo_query": "Kłokoczycka 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -390,7 +453,9 @@
    "lat": 51.0599838,
    "lon": 16.998907,
    "geo_query": "Zwycięska 2",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -407,7 +472,9 @@
    "lat": 51.1066902,
    "lon": 17.0278672,
    "geo_query": "Wolności",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -424,7 +491,9 @@
    "lat": 51.2052431,
    "lon": 16.9963066,
    "geo_query": "Lotnisko Wrocław-Szymanów",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -441,7 +510,9 @@
    "lat": 51.1309033,
    "lon": 17.0608627,
    "geo_query": "Kromera",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -458,7 +529,9 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -475,7 +548,9 @@
    "lat": 51.1154995,
    "lon": 17.0158574,
    "geo_query": "Zachodnia 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -492,7 +567,9 @@
    "lat": 51.1084492,
    "lon": 17.0405395,
    "geo_query": "Dominikański 3",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-06",
@@ -509,7 +586,9 @@
    "lat": 51.109306,
    "lon": 17.026094,
    "geo_query": "Kazimierza Wielkiego 19a-21",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -526,7 +605,9 @@
    "lat": 51.1107265,
    "lon": 17.0292712,
    "geo_query": "Kiełbaśnicza 28",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -543,7 +624,9 @@
    "lat": 51.1107443,
    "lon": 17.0283064,
    "geo_query": "Rzeźnicza 4",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -560,7 +643,9 @@
    "lat": 51.1109946,
    "lon": 17.0313397,
    "geo_query": "Dolnośląska Biblioteka Publiczna",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -577,7 +662,9 @@
    "lat": 51.1017174,
    "lon": 17.030301,
    "geo_query": "Piłsudskiego 64a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -594,7 +681,9 @@
    "lat": 51.1090095,
    "lon": 17.0291881,
    "geo_query": "Solny 15",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-07",
@@ -611,7 +700,9 @@
    "lat": 51.1083988,
    "lon": 17.0352548,
    "geo_query": "Oławska 13",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -628,7 +719,9 @@
    "lat": 51.1081854,
    "lon": 17.0191534,
    "geo_query": "Orląt Lwowskich 20B",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -645,7 +738,9 @@
    "lat": 51.1017174,
    "lon": 17.030301,
    "geo_query": "Piłsudskiego 64a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -662,7 +757,9 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -679,7 +776,9 @@
    "lat": 51.1056963,
    "lon": 17.0306062,
    "geo_query": "Świdnicka 35",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -696,7 +795,9 @@
    "lat": 51.1083988,
    "lon": 17.0352548,
    "geo_query": "Oławska 13",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -713,7 +814,9 @@
    "lat": 51.1160932,
    "lon": 17.0388823,
    "geo_query": "Wyspa Słodowa 7",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-08",
@@ -730,7 +833,9 @@
    "lat": 51.1083988,
    "lon": 17.0352548,
    "geo_query": "Oławska 13",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -747,7 +852,9 @@
    "lat": 51.1686962,
    "lon": 17.113278,
    "geo_query": "Pawłowicka 78",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -764,7 +871,9 @@
    "lat": 51.1387889,
    "lon": 17.0303354,
    "geo_query": "Bałtycka 8",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -781,7 +890,9 @@
    "lat": 51.0964161,
    "lon": 17.034822,
    "geo_query": "Sucha 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -798,7 +909,9 @@
    "lat": 51.1084492,
    "lon": 17.0405395,
    "geo_query": "Dominikański 3",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -815,7 +928,9 @@
    "lat": 51.1032583,
    "lon": 17.0319518,
    "geo_query": "Świdnicka 40",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -832,7 +947,9 @@
    "lat": 51.1079972,
    "lon": 17.0345182,
    "geo_query": "Ofiar Oświęcimskich 36",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-09",
@@ -849,7 +966,9 @@
    "lat": 51.1083988,
    "lon": 17.0352548,
    "geo_query": "Oławska 13",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -866,7 +985,9 @@
    "lat": 51.1319217,
    "lon": 17.0583837,
    "geo_query": "Długosza 2-6",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -883,7 +1004,9 @@
    "lat": 51.1107247,
    "lon": 17.0339098,
    "geo_query": "Kuźnicza 3",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -900,7 +1023,9 @@
    "lat": 51.1095759,
    "lon": 17.0320658,
    "geo_query": "Stary Ratusz",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -917,7 +1042,9 @@
    "lat": 51.1099997,
    "lon": 17.0246348,
    "geo_query": "Ruska 46C",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -934,7 +1061,9 @@
    "lat": 51.1017174,
    "lon": 17.030301,
    "geo_query": "Piłsudskiego 64a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -951,7 +1080,9 @@
    "lat": 51.108066,
    "lon": 17.035246,
    "geo_query": "Łaciarska 4",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -968,7 +1099,9 @@
    "lat": 51.1048016,
    "lon": 17.010427,
    "geo_query": "Tęczowa 79/81",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-10",
@@ -985,7 +1118,9 @@
    "lat": 51.1083988,
    "lon": 17.0352548,
    "geo_query": "Oławska 13",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1002,7 +1137,9 @@
    "lat": 51.1122487,
    "lon": 17.0381745,
    "geo_query": "Nankiera 8",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1019,7 +1156,9 @@
    "lat": 51.1094563,
    "lon": 17.0326988,
    "geo_query": "Pręgierz",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1036,7 +1175,9 @@
    "lat": 51.0915651,
    "lon": 17.0409443,
    "geo_query": "Gliniana 20-22",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1053,7 +1194,9 @@
    "lat": 51.1102855,
    "lon": 17.0245017,
    "geo_query": "Ruska 46a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1070,7 +1213,9 @@
    "lat": 51.1119312,
    "lon": 17.0452911,
    "geo_query": "Bulwar Xawerego Dunikowskiego",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 3,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1087,7 +1232,9 @@
    "lat": 51.1183463,
    "lon": 17.0443632,
    "geo_query": "Sienkiewicza 8A",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1104,7 +1251,9 @@
    "lat": 51.1161637,
    "lon": 17.0423042,
    "geo_query": "św. Marcina 4",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1121,7 +1270,9 @@
    "lat": 51.107701,
    "lon": 17.0328493,
    "geo_query": "Świdnicka 8B",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1138,7 +1289,9 @@
    "lat": 51.1348935,
    "lon": 17.0216432,
    "geo_query": "Serbska 5a",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1155,7 +1308,9 @@
    "lat": 51.1101337,
    "lon": 17.0294655,
    "geo_query": "Kiełbaśnicza 2",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1172,7 +1327,9 @@
    "lat": 51.1069844,
    "lon": 17.0265381,
    "geo_query": "Wolności 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1189,7 +1346,9 @@
    "lat": 51.0987926,
    "lon": 17.0487399,
    "geo_query": "Prądzyńskiego 39A",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1206,7 +1365,9 @@
    "lat": 51.0964161,
    "lon": 17.034822,
    "geo_query": "Sucha 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1223,7 +1384,9 @@
    "lat": 51.0999,
    "lon": 17.033,
    "geo_query": "override",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1240,7 +1403,9 @@
    "lat": 51.104186,
    "lon": 17.0299012,
    "geo_query": "Podwale 37/38",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1257,7 +1422,9 @@
    "lat": 51.1113163,
    "lon": 17.0252585,
    "geo_query": "Św. Mikołaja 54/55",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1274,7 +1441,9 @@
    "lat": 51.1113163,
    "lon": 17.0252585,
    "geo_query": "Św. Mikołaja 54/55",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-11",
@@ -1291,7 +1460,28 @@
    "lat": 51.110049,
    "lon": 17.0306757,
    "geo_query": "Rynek",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 2,
+   "recurrence": null
+  },
+  {
+   "date": "2026-09-12",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 3,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   },
   {
    "date": "2026-09-12",
@@ -1308,7 +1498,9 @@
    "lat": 51.1321094,
    "lon": 16.9875029,
    "geo_query": "Wejherowska 34",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1325,7 +1517,9 @@
    "lat": 51.0967261,
    "lon": 17.0628487,
    "geo_query": "Na Niskich Łąkach 7",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1342,7 +1536,9 @@
    "lat": 51.1084171,
    "lon": 17.074924,
    "geo_query": "Wystawowa 1",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1359,7 +1555,9 @@
    "lat": 51.1091841,
    "lon": 17.0290201,
    "geo_query": "Solny",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1376,7 +1574,9 @@
    "lat": 51.1009827,
    "lon": 17.0321519,
    "geo_query": "Piłsudskiego 74",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 2,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1393,7 +1593,9 @@
    "lat": 51.1051499,
    "lon": 17.087288,
    "geo_query": "Tramwajowa 1-3",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 2,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1410,7 +1612,9 @@
    "lat": 51.1048871,
    "lon": 17.0345862,
    "geo_query": "Ogród Staromiejski",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1427,7 +1631,9 @@
    "lat": 51.1279986,
    "lon": 17.0005602,
    "geo_query": "Polana Popowicka",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1444,7 +1650,9 @@
    "lat": 51.1119312,
    "lon": 17.0452911,
    "geo_query": "Bulwar Xawerego Dunikowskiego",
-   "extra_dates": []
+   "day_index": 2,
+   "day_count": 3,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1461,7 +1669,9 @@
    "lat": 51.1101337,
    "lon": 17.0294655,
    "geo_query": "Kiełbaśnicza 2",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
   },
   {
    "date": "2026-09-12",
@@ -1478,7 +1688,28 @@
    "lat": 51.110049,
    "lon": 17.0306757,
    "geo_query": "Rynek",
-   "extra_dates": []
+   "day_index": 2,
+   "day_count": 2,
+   "recurrence": null
+  },
+  {
+   "date": "2026-09-13",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 4,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   },
   {
    "date": "2026-09-13",
@@ -1495,7 +1726,9 @@
    "lat": 51.1009827,
    "lon": 17.0321519,
    "geo_query": "Piłsudskiego 74",
-   "extra_dates": []
+   "day_index": 2,
+   "day_count": 2,
+   "recurrence": null
   },
   {
    "date": "2026-09-13",
@@ -1512,7 +1745,9 @@
    "lat": 51.1051499,
    "lon": 17.087288,
    "geo_query": "Tramwajowa 1-3",
-   "extra_dates": []
+   "day_index": 2,
+   "day_count": 2,
+   "recurrence": null
   },
   {
    "date": "2026-09-13",
@@ -1529,7 +1764,123 @@
    "lat": 51.1119312,
    "lon": 17.0452911,
    "geo_query": "Bulwar Xawerego Dunikowskiego",
-   "extra_dates": []
+   "day_index": 3,
+   "day_count": 3,
+   "recurrence": null
+  },
+  {
+   "date": "2026-09-19",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 5,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-09-20",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 6,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 7,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-09-27",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 8,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-03",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 9,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-04",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 10,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   },
   {
    "date": "2026-10-04",
@@ -1546,7 +1897,142 @@
    "lat": 51.1411861,
    "lon": 16.9438067,
    "geo_query": "Tarczyński Arena Wrocław",
-   "extra_dates": []
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null
+  },
+  {
+   "date": "2026-10-10",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 11,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 12,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-17",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 13,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-18",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 14,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-24",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 15,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-25",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 16,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
+  },
+  {
+   "date": "2026-10-31",
+   "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
+   "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
+   "time_start": "09:00",
+   "time_end": "18:00",
+   "description": "Уже 5 сентября в саду в Wiszni Małej стартует сезон самостоятельного сбора яблок.\nЗдесь всё просто - приезжаете в сад, гуляете между деревьями и сами выбираете и собираете яблоки 🍏\n🍎 В саду растут Gala, Golden Delicious, Idared, Jonagold, Jonagored и другие сорта.\n🔥 По выходным здесь разжигают костёр - можно взять с собой что-нибудь для гриля и устроить небольшой пикник.\nВ этом году яблок меньше обычного из-за засухи и весенних заморозков, поэтому с поездкой лучше не затягивать.\n⚠️ Перед поездкой обязательно откройте «Подробнее», проверьте актуальную информацию и позвоните по контактам, указанным в объявлении.",
+   "price": null,
+   "emoji": "🍎",
+   "title_ru": "Jabłkobranie рядом с Вроцлавом — собираем яблоки прямо с дерева",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1033",
+   "lat": 51.2613802,
+   "lon": 17.0542087,
+   "geo_query": "Pierwoszowska 2|Wisznia Mała",
+   "day_index": 17,
+   "day_count": 17,
+   "recurrence": "по субботам и воскресеньям"
   }
  ]
 }

@@ -6,6 +6,7 @@
 <title>Wrocław Events Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
   :root{
     --bg:#fbf9f4; --panel:#ffffff; --ink:#2b2a27; --muted:#77736b; --line:#e6e1d6;
@@ -72,6 +73,9 @@
 
 <script>
 const TZ = 'Europe/Warsaw';
+// Внутри Telegram (Mini App): раскрываем на весь экран, ссылки открываем во внешнем браузере
+const TG = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData !== undefined && Telegram.WebApp.platform !== 'unknown' ? Telegram.WebApp : null;
+if (TG){ TG.ready(); TG.expand(); document.addEventListener('click', ev => { const a = ev.target.closest('a[target=_blank]'); if (a){ ev.preventDefault(); TG.openLink(a.href); } }); }
 const WEEK = ['вс','пн','вт','ср','чт','пт','сб'];
 const MON = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
 let EVENTS = [], byDate = new Map(), current = null, markers = [], markerByKey = new Map();
@@ -98,7 +102,10 @@ function range(e){
 }
 const pad = n => String(n).padStart(2,'0');
 const local = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
-function title(e){ return e.title_ru && e.title_ru !== e.title ? `${e.title} (${e.title_ru})` : e.title; }
+const dayTag = e => e.day_count > 1 ? ` (${e.day_index} из ${e.day_count})` : '';
+const shown = e => e.title + dayTag(e);                       // название с «(2 из 3)»
+function title(e){ return (e.title_ru && e.title_ru !== e.title ? `${e.title} (${e.title_ru})` : e.title) + dayTag(e); }
+const metaLine = e => `🕒 ${esc(timeStr(e))}${e.recurrence ? ' · 🔁 ' + esc(e.recurrence) : ''}`;
 function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source : ''].filter(Boolean).join('\n\n'); }
 function gcalUrl(e){
   const [s,en] = range(e);
@@ -121,9 +128,9 @@ function downloadIcs(idx){
 
 // ---- рендер ----
 function eventHtml(e, idx, full){
-  const h = `<div class="t">${esc(e.emoji)} ${esc(e.title)}</div>` +
+  const h = `<div class="t">${esc(e.emoji)} ${esc(shown(e))}</div>` +
     (e.title_ru && e.title_ru !== e.title ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
-    `<div class="m">🕒 ${esc(timeStr(e))} · 📍 ${esc(e.address)}</div>`;
+    `<div class="m">${metaLine(e)} · 📍 ${esc(e.address)}</div>`;
   if (!full) return h;
   return h + (e.description ? `<div class="desc">${esc(e.description)}</div>` : '') +
     (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') +
@@ -152,7 +159,7 @@ function show(dateIso){
       html:`<div class="emoji-pin">${esc(e0.emoji || '📍')}${idxs.length>1 ? `<span class="cnt">${idxs.length}</span>` : ''}</div>`});
     const m = L.marker([e0.lat, e0.lon], {icon}).addTo(map);
     m.bindTooltip(idxs.map(i => { const e = EVENTS[i];
-      return `<b>${esc(e.emoji)} ${esc(e.title)}${e.title_ru && e.title_ru !== e.title ? ' · ' + esc(e.title_ru) : ''}</b>🕒 ${esc(timeStr(e))}` +
+      return `<b>${esc(e.emoji)} ${esc(shown(e))}${e.title_ru && e.title_ru !== e.title ? ' · ' + esc(e.title_ru) : ''}</b>${metaLine(e)}` +
              (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
       {className:'ev', direction:'top', offset:[0,-10], sticky:false});
     m.bindPopup(idxs.map(i => `<div class="pp">${eventHtml(EVENTS[i], i, true)}</div>`).join(''), {maxWidth:360});
