@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wrocław Events Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --bg:#fbf9f4; --panel:#ffffff; --ink:#2b2a27; --muted:#77736b; --line:#e6e1d6;
+    --accent:#c9663b; --accent-soft:#f6e3d8; --chip:#f1ede4;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+  #app{display:flex;flex-direction:column;height:100%}
+  header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--panel);border-bottom:1px solid var(--line)}
+  header h1{font-size:17px;margin:0 12px 0 0;font-weight:650;white-space:nowrap}
+  .dates{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+  .chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:14px;white-space:nowrap}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip .n{opacity:.65;font-size:12px;margin-left:4px}
+  input[type=date]{border:1px solid var(--line);border-radius:8px;padding:5px 8px;font:inherit;background:var(--panel);color:var(--ink)}
+  #main{flex:1;display:flex;min-height:0}
+  #map{flex:1;min-height:0}
+  aside{width:340px;max-width:45vw;overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:8px}
+  .card{padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;background:#fff}
+  .card:hover,.card.hl{border-color:var(--accent);background:var(--accent-soft)}
+  .card .t{font-weight:600}
+  .card .ru{color:var(--muted);font-size:13px}
+  .card .m{color:var(--muted);font-size:13px;margin-top:2px}
+  .card.nogeo{opacity:.7;border-style:dashed}
+  .emoji-pin{font-size:22px;line-height:1;text-align:center;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));position:relative}
+  .emoji-pin .cnt{position:absolute;top:-6px;right:-8px;background:var(--accent);color:#fff;border-radius:999px;font-size:11px;padding:1px 5px;font-weight:600}
+  .leaflet-tooltip.ev{max-width:320px;white-space:normal;padding:8px 10px;border-radius:8px;font:13px/1.35 system-ui,sans-serif}
+  .leaflet-tooltip.ev b{display:block;margin-bottom:2px}
+  .leaflet-tooltip.ev .d{color:#555;margin-top:4px}
+  .leaflet-popup-content{margin:12px 14px;max-width:340px;font:14px/1.4 system-ui,sans-serif}
+  .pp{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .pp:last-child{border:none;margin:0;padding:0}
+  .pp .t{font-weight:650;font-size:15px}
+  .pp .ru{color:var(--muted)}
+  .pp .m{color:var(--muted);font-size:13px;margin:2px 0}
+  .pp .desc{margin:6px 0}
+  .btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .btn{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:5px 9px;font-size:13px;cursor:pointer;color:var(--ink);text-decoration:none}
+  .btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .empty{color:var(--muted);padding:20px;text-align:center}
+  @media (max-width:760px){
+    header{flex-wrap:nowrap}
+    header h1{font-size:15px;margin-right:6px}
+    .dates{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+    .dates::-webkit-scrollbar{display:none}
+    input[type=date]{display:none}
+    #main{flex-direction:column}
+    aside{width:auto;max-width:none;height:38vh;border-left:none;border-top:1px solid var(--line)}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>📍 Wrocław Events Map</h1>
+    <div class="dates" id="dates"></div>
+    <input type="date" id="datePick" title="Другая дата">
+  </header>
+  <div id="main">
+    <div id="map"></div>
+    <aside id="list"></aside>
+  </div>
+</div>
+
+<script>
+const TZ = 'Europe/Warsaw';
+const WEEK = ['вс','пн','вт','ср','чт','пт','сб'];
+const MON = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+let EVENTS = [], byDate = new Map(), current = null, markers = [], markerByKey = new Map();
+
+const map = L.map('map', {zoomControl:true}).setView([51.11, 17.03], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate = iso => { const d = new Date(iso+'T00:00'); return `${WEEK[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`; };
+const timeStr = e => e.time_start ? (e.time_end ? `${e.time_start}–${e.time_end}` : e.time_start) : 'время не указано';
+
+// ---- календарь ----
+function range(e){
+  const [y,m,d] = e.date.split('-').map(Number);
+  const start = new Date(y, m-1, d, ...(e.time_start||'10:00').split(':').map(Number));
+  let end;
+  if (e.time_end){
+    end = new Date(y, m-1, d, ...e.time_end.split(':').map(Number));
+    if (end <= start) end.setDate(end.getDate()+1);   // 12:00–02:00
+  } else end = new Date(start.getTime() + 2*3600e3);
+  return [start, end];
+}
+const pad = n => String(n).padStart(2,'0');
+const local = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+function title(e){ return e.title_ru && e.title_ru !== e.title ? `${e.title} (${e.title_ru})` : e.title; }
+function details(e){ return [e.description, e.price ? '🎟 ' + e.price : '', e.source ? 'Источник: ' + e.source : ''].filter(Boolean).join('\n\n'); }
+function gcalUrl(e){
+  const [s,en] = range(e);
+  const p = new URLSearchParams({action:'TEMPLATE', text:title(e), dates:`${local(s)}/${local(en)}`, ctz:TZ, details:details(e), location: e.address + ', Wrocław'});
+  return 'https://calendar.google.com/calendar/render?' + p.toString();
+}
+function downloadIcs(idx){
+  const e = EVENTS[idx]; const [s,en] = range(e);
+  const escI = t => (t||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Wroclaw Events Map//RU','BEGIN:VEVENT',
+    `UID:${e.date}-${idx}@wroclaweventsmap`, `DTSTAMP:${local(new Date())}Z`,
+    `DTSTART;TZID=${TZ}:${local(s)}`, `DTEND;TZID=${TZ}:${local(en)}`,
+    `SUMMARY:${escI(title(e))}`, `LOCATION:${escI(e.address + ', Wrocław')}`, `DESCRIPTION:${escI(details(e))}`,
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
+  a.download = (e.title.replace(/[^\w\dа-яё -]/gi,'').trim() || 'event') + '.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+// ---- рендер ----
+function eventHtml(e, idx, full){
+  const h = `<div class="t">${esc(e.emoji)} ${esc(e.title)}</div>` +
+    (e.title_ru && e.title_ru !== e.title ? `<div class="ru">${esc(e.title_ru)}</div>` : '') +
+    `<div class="m">🕒 ${esc(timeStr(e))} · 📍 ${esc(e.address)}</div>`;
+  if (!full) return h;
+  return h + (e.description ? `<div class="desc">${esc(e.description)}</div>` : '') +
+    (e.price ? `<div class="m">🎟 ${esc(e.price)}</div>` : '') +
+    `<div class="btns"><a class="btn" target="_blank" rel="noopener" href="${gcalUrl(e)}">📅 Google Calendar</a>` +
+    `<button class="btn" onclick="downloadIcs(${idx})">⬇ .ics</button>` +
+    `<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.address + ', Wrocław')}">🗺 Маршрут</a></div>`;
+}
+
+function show(dateIso){
+  current = dateIso;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.d === dateIso));
+  document.getElementById('datePick').value = dateIso;
+  markers.forEach(m => m.remove()); markers = []; markerByKey.clear();
+  const evs = byDate.get(dateIso) || [];
+  const list = document.getElementById('list');
+  if (!evs.length){ list.innerHTML = `<div class="empty">На ${fmtDate(dateIso)} событий нет</div>`; return; }
+
+  // группируем по точке: несколько событий в одном месте -> одна метка
+  const groups = new Map();
+  evs.forEach(i => { const e = EVENTS[i]; if (e.lat == null) return;
+    const k = e.lat.toFixed(5)+','+e.lon.toFixed(5); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(i); });
+  const bounds = [];
+  groups.forEach((idxs, k) => {
+    const e0 = EVENTS[idxs[0]];
+    const icon = L.divIcon({className:'', iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-12],
+      html:`<div class="emoji-pin">${esc(e0.emoji || '📍')}${idxs.length>1 ? `<span class="cnt">${idxs.length}</span>` : ''}</div>`});
+    const m = L.marker([e0.lat, e0.lon], {icon}).addTo(map);
+    m.bindTooltip(idxs.map(i => { const e = EVENTS[i];
+      return `<b>${esc(e.emoji)} ${esc(e.title)}${e.title_ru && e.title_ru !== e.title ? ' · ' + esc(e.title_ru) : ''}</b>🕒 ${esc(timeStr(e))}` +
+             (e.description ? `<div class="d">${esc(e.description)}</div>` : '') + (e.price ? `<div class="d">🎟 ${esc(e.price)}</div>` : ''); }).join('<hr>'),
+      {className:'ev', direction:'top', offset:[0,-10], sticky:false});
+    m.bindPopup(idxs.map(i => `<div class="pp">${eventHtml(EVENTS[i], i, true)}</div>`).join(''), {maxWidth:360});
+    m.on('mouseover', () => idxs.forEach(i => document.getElementById('c'+i)?.classList.add('hl')));
+    m.on('mouseout',  () => idxs.forEach(i => document.getElementById('c'+i)?.classList.remove('hl')));
+    markers.push(m); idxs.forEach(i => markerByKey.set(i, m)); bounds.push([e0.lat, e0.lon]);
+  });
+  map.invalidateSize();
+  if (bounds.length) map.fitBounds(bounds, {padding:[40,40], maxZoom:15, animate:false});
+
+  list.innerHTML = `<div class="m" style="padding:4px 6px 8px;color:var(--muted)">${fmtDate(dateIso)} · ${evs.length} событий</div>` +
+    evs.map(i => { const e = EVENTS[i];
+      return `<div class="card${e.lat==null?' nogeo':''}" id="c${i}" onclick="focusEv(${i})">${eventHtml(e, i, false)}${e.lat==null?'<div class="m">⚠ адрес не найден на карте</div>':''}</div>`; }).join('');
+}
+function focusEv(i){
+  const m = markerByKey.get(i); if (!m) return;
+  map.setView(m.getLatLng(), Math.max(map.getZoom(), 15)); m.openPopup();
+}
+
+function todayIso(){ return new Date().toLocaleDateString('sv', {timeZone: TZ}); }
+
+fetch('events.json?' + Date.now()).then(r => r.json()).then(data => {
+  EVENTS = data.events;
+  EVENTS.forEach((e, i) => { if (!byDate.has(e.date)) byDate.set(e.date, []); byDate.get(e.date).push(i); });
+  const dates = [...byDate.keys()].sort();
+  const box = document.getElementById('dates');
+  box.innerHTML = dates.map(d => `<button class="chip" data-d="${d}" onclick="show('${d}')">${fmtDate(d)}<span class="n">${byDate.get(d).length}</span></button>`).join('');
+  document.getElementById('datePick').onchange = ev => show(ev.target.value);
+  window.addEventListener('resize', () => map.invalidateSize());
+  const t = todayIso();
+  show(byDate.has(t) ? t : (dates.find(d => d >= t) || dates[dates.length-1] || t));
+});
+</script>
+</body>
+</html>
