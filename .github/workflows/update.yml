@@ -50,3 +50,13 @@ jobs:
           git add data docs
           git diff --cached --quiet || git commit -m "update events $(date -u +'%Y-%m-%d %H:%M')"
           git push
+
+      - name: refresh bot menu button (cache-busting URL)
+        if: ${{ secrets.TG_BOT_TOKEN != '' }}
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        run: |
+          V=$(git rev-parse --short HEAD)
+          curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/setChatMenuButton" \
+            -H "Content-Type: application/json" \
+            -d "{\"menu_button\":{\"type\":\"web_app\",\"text\":\"Карта\",\"web_app\":{\"url\":\"https://olhaafanasievavik-max.github.io/wroclaw-events-map/?v=$V\"}}}" > /dev/null
