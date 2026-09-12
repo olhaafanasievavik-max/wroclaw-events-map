@@ -32,6 +32,12 @@ jobs:
           TG_CHANNELS: ${{ secrets.TG_CHANNELS }}
         run: python src/fetch_telegram.py
 
+      - name: fetch messages sent to the bot
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_OWNER_ID: ${{ secrets.TG_OWNER_ID }}
+        run: python src/fetch_bot.py
+
       - name: build events.json
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
