@@ -373,5 +373,30 @@
   "lat": 51.2052431,
   "lon": 16.9963066,
   "q": "Lotnisko Wrocław-Szymanów"
+ },
+ "Wrocławski Tor Wyścigów Konnych - Partynice": {
+  "lat": 51.0560595,
+  "lon": 16.9990938,
+  "q": "Wrocławski Tor Wyścigów Konnych - Partynice"
+ },
+ "Otwarta Przestrzeń Kultury, al. Dąbska 50": {
+  "lat": 51.108897,
+  "lon": 17.0817737,
+  "q": "Dąbska 50"
+ },
+ "Park Tarnogajski": {
+  "lat": 51.0833229,
+  "lon": 17.0677573,
+  "q": "Park Tarnogajski"
+ },
+ "Otwarta Przestrzeń Kultury, al. Dąbska": {
+  "lat": 51.108897,
+  "lon": 17.0817737,
+  "q": "Dąbska"
+ },
+ "Wrocławski Klub Formaty, ul. Samborska 3-5": {
+  "lat": 51.0975799,
+  "lon": 16.9437446,
+  "q": "Samborska 3-5"
  }
 }
