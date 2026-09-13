@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "*/30 5-22 * * *"   # каждые 30 минут с 05:00 до 22:59 UTC (07-00 по Вроцлаву летом)
   workflow_dispatch:            # кнопка «Run workflow» для ручного запуска
+  push:                         # и после изменений кода, чтобы сразу пересобрать карту
+    branches: [main]
+    paths: ["src/**", "docs/index.html", ".github/workflows/update.yml"]
 
 permissions:
   contents: write
@@ -52,10 +55,10 @@ jobs:
           git push
 
       - name: refresh bot menu button (cache-busting URL)
-        if: ${{ secrets.TG_BOT_TOKEN != '' }}
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         run: |
+          [ -z "$TG_BOT_TOKEN" ] && { echo "нет TG_BOT_TOKEN, пропускаю"; exit 0; }
           V=$(git rev-parse --short HEAD)
           curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/setChatMenuButton" \
             -H "Content-Type: application/json" \
