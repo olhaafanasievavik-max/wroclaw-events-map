@@ -398,5 +398,16 @@
   "lat": 51.0975799,
   "lon": 16.9437446,
   "q": "Samborska 3-5"
- }
+ },
+ "CAL Brochów, ul. Koreańska 1A": {
+  "lat": 51.058513,
+  "lon": 17.0859922,
+  "q": "Koreańska 1A"
+ },
+ "Klub Muzyki i Literatury, pl. Kościuszki 10": {
+  "lat": 51.1023507,
+  "lon": 17.0286592,
+  "q": "Kościuszki 10"
+ },
+ "Проекции пройдут на 6 стенах в районе Nadodrze:": null
 }
