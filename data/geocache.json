@@ -409,5 +409,25 @@
   "lon": 17.0286592,
   "q": "Kościuszki 10"
  },
- "Проекции пройдут на 6 стенах в районе Nadodrze:": null
+ "Проекции пройдут на 6 стенах в районе Nadodrze:": null,
+ "Uniwersytet Medyczny, ul. Marcinkowskiego 2-6": {
+  "lat": 51.1117403,
+  "lon": 17.0684324,
+  "q": "Marcinkowskiego 2-6"
+ },
+ "Biblioteka, Filia nr 29, ul. Reja 1": {
+  "lat": 51.1133343,
+  "lon": 17.0573892,
+  "q": "Reja 1"
+ },
+ "CAL Zacisze-Zalesie-Szczytniki, ul. Chopina 9A": {
+  "lat": 51.1198666,
+  "lon": 17.0820863,
+  "q": "Chopina 9A"
+ },
+ "Marina Kleczków – Beach Bar, ul. Pasterska 2B": {
+  "lat": 51.1306327,
+  "lon": 17.0324202,
+  "q": "Pasterska 2B"
+ }
 }
