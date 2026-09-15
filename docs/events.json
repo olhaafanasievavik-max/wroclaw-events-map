@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T09:59",
+ "generated": "2026-09-15T14:54",
  "events": [
   {
    "date": "2026-09-04",
@@ -2283,6 +2283,26 @@
   },
   {
    "date": "2026-09-19",
+   "title": "Jesienne Targi Dobry Design во Вроцлаве",
+   "address": "Concordia Design, Wyspa Słodowa 7",
+   "time_start": "11:00",
+   "time_end": "18:00",
+   "description": "Если любите стильные маркеты, локальные бренды и красивые вещи, то на этих выходных стоит заглянуть в Concordia Design на Wyspie Słodowej.\n19-20 сентября здесь пройдут Jesienne Targi Dobry Design - атмосферная ярмарка польского дизайна, авторских проектов и красивого ремесла.",
+   "price": "Вход свободный",
+   "emoji": "🍂",
+   "title_ru": "Осенняя ярмарка дизайна Dobry Design во Вроцлаве",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1074",
+   "lat": 51.1160932,
+   "lon": 17.0388823,
+   "geo_query": "Wyspa Słodowa 7",
+   "day_index": 1,
+   "day_count": 2,
+   "recurrence": null,
+   "url": "https://t.me/wroclaw_in/1074"
+  },
+  {
+   "date": "2026-09-19",
    "title": "KINOMURAL 2026 - стены Вроцлава снова оживут",
    "address": "Проекции пройдут на 6 стенах в районе Nadodrze:",
    "time_start": "19:30",
@@ -2320,6 +2340,26 @@
    "day_count": 17,
    "recurrence": "по субботам и воскресеньям",
    "url": "https://t.me/c/2587238779/1033"
+  },
+  {
+   "date": "2026-09-20",
+   "title": "Jesienne Targi Dobry Design во Вроцлаве",
+   "address": "Concordia Design, Wyspa Słodowa 7",
+   "time_start": "11:00",
+   "time_end": "18:00",
+   "description": "Если любите стильные маркеты, локальные бренды и красивые вещи, то на этих выходных стоит заглянуть в Concordia Design на Wyspie Słodowej.\n19-20 сентября здесь пройдут Jesienne Targi Dobry Design - атмосферная ярмарка польского дизайна, авторских проектов и красивого ремесла.",
+   "price": "Вход свободный",
+   "emoji": "🍂",
+   "title_ru": "Осенняя ярмарка дизайна Dobry Design во Вроцлаве",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1074",
+   "lat": 51.1160932,
+   "lon": 17.0388823,
+   "geo_query": "Wyspa Słodowa 7",
+   "day_index": 2,
+   "day_count": 2,
+   "recurrence": null,
+   "url": "https://t.me/wroclaw_in/1074"
   },
   {
    "date": "2026-09-26",
