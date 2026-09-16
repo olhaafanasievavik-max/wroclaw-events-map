@@ -434,5 +434,15 @@
   "lat": 51.1160932,
   "lon": 17.0388823,
   "q": "Wyspa Słodowa 7"
+ },
+ "Dolnośląska Biblioteka Publiczna, Rynek 58, 3 этаж, sala 35": {
+  "lat": 51.1109946,
+  "lon": 17.0313397,
+  "q": "Rynek 58"
+ },
+ "Uniwersytet Wrocławski, pl. Nankiera 15B, sala 141": {
+  "lat": 51.1130109,
+  "lon": 17.0388271,
+  "q": "Nankiera 15B"
  }
 }
