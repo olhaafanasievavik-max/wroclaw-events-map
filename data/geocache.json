@@ -474,5 +474,15 @@
   "lat": 51.1137982,
   "lon": 17.0335288,
   "q": "Uniwersytecki 1"
+ },
+ "plac Solny и plac Gołębi (Rynek)": {
+  "lat": 51.1091841,
+  "lon": 17.0290201,
+  "q": "Solny"
+ },
+ "Browar Mieszczański, ul. Hubska 44": {
+  "lat": 51.0922812,
+  "lon": 17.0446746,
+  "q": "Hubska 44"
  }
 }
