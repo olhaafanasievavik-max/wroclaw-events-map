@@ -444,5 +444,35 @@
   "lat": 51.1130109,
   "lon": 17.0388271,
   "q": "Nankiera 15B"
+ },
+ "Pracze Odrzańskie, место встречи сообщают после записи": {
+  "lat": 51.1740406,
+  "lon": 16.9099149,
+  "q": "Pracze Odrzańskie"
+ },
+ "Wydział Architektury PWr, ul. Bolesława Prusa 53/55": {
+  "lat": 51.1190644,
+  "lon": 17.05453,
+  "q": "Bolesława Prusa 53/55"
+ },
+ "Muzeum Architektury, ul. Bernardyńska 5": {
+  "lat": 51.1094652,
+  "lon": 17.0420402,
+  "q": "Bernardyńska 5"
+ },
+ "Kino Popiół i Diament, Muzeum Pana Tadeusza, Rynek 6": {
+  "lat": 51.1104299,
+  "lon": 17.0302752,
+  "q": "Rynek 6"
+ },
+ "Centrum Sztuki WRO, ul. Widok 7": {
+  "lat": 51.106092,
+  "lon": 17.0329198,
+  "q": "Widok 7"
+ },
+ "Oratorium Marianum, pl. Uniwersytecki 1": {
+  "lat": 51.1137982,
+  "lon": 17.0335288,
+  "q": "Uniwersytecki 1"
  }
 }
