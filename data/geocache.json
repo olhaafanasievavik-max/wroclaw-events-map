@@ -484,5 +484,31 @@
   "lat": 51.0922812,
   "lon": 17.0446746,
   "q": "Hubska 44"
- }
+ },
+ "Stare Jatki, ul. Jatki 12-13": {
+  "lat": 51.1121441,
+  "lon": 17.0306343,
+  "q": "Jatki 12-13"
+ },
+ "Plac Solny и Plac Gołębi": {
+  "lat": 51.1091841,
+  "lon": 17.0290201,
+  "q": "Solny"
+ },
+ "Centrum Kultury Agora, ul. Serbska 5A": {
+  "lat": 51.1348935,
+  "lon": 17.0216432,
+  "q": "Serbska 5A"
+ },
+ "Старт - Rynek, возле Starego Ratusza": {
+  "lat": 51.110049,
+  "lon": 17.0306757,
+  "q": "Rynek"
+ },
+ "Nadodrze - несколько локаций": {
+  "lat": 51.1204317,
+  "lon": 17.0303538,
+  "q": "Nadodrze"
+ },
+ "Plac pod Iglicą, ul. Wystawowa 1": null
 }
