@@ -510,5 +510,10 @@
   "lon": 17.0303538,
   "q": "Nadodrze"
  },
- "Plac pod Iglicą, ul. Wystawowa 1": null
+ "Plac pod Iglicą, ul. Wystawowa 1": null,
+ "Pałac Królewski, ul. Kazimierza Wielkiego 35": {
+  "lat": 51.1076223,
+  "lon": 17.0292728,
+  "q": "Kazimierza Wielkiego 35"
+ }
 }
