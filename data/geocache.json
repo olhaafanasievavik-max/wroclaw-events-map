@@ -515,5 +515,30 @@
   "lat": 51.1076223,
   "lon": 17.0292728,
   "q": "Kazimierza Wielkiego 35"
+ },
+ "Dolnośląski Ośrodek Doradztwa Rolniczego, ul. Zwycięska 8": {
+  "lat": 51.0595102,
+  "lon": 17.0038003,
+  "q": "Zwycięska 8"
+ },
+ "Tarczyński Arena Wrocław, al. Śląska 1": {
+  "lat": 51.1411861,
+  "lon": 16.9438067,
+  "q": "Śląska 1"
+ },
+ "Plac Kościuszki": {
+  "lat": 51.1014843,
+  "lon": 17.0388391,
+  "q": "Kościuszki"
+ },
+ "Nadodrze - 6 локаций": {
+  "lat": 51.1204317,
+  "lon": 17.0303538,
+  "q": "Nadodrze"
+ },
+ "Ośrodek Szkolenia Psów ZKwP, ul. Na Niskich Łąkach 7": {
+  "lat": 51.0967261,
+  "lon": 17.0628487,
+  "q": "Na Niskich Łąkach 7"
  }
 }
