@@ -540,5 +540,30 @@
   "lat": 51.0967261,
   "lon": 17.0628487,
   "q": "Na Niskich Łąkach 7"
+ },
+ "Skwer św. Damiana de Veuster": {
+  "lat": 51.1163766,
+  "lon": 17.0139385,
+  "q": "Skwer św. Damiana de Veuster"
+ },
+ "Tor Wrotkarski i Kryte Rolkowisko Nowy Dwór, ul. Jaksonowicka 28": {
+  "lat": 51.1188862,
+  "lon": 16.9387064,
+  "q": "Jaksonowicka 28"
+ },
+ "Archiwum Państwowe, ul. Pomorska 2": {
+  "lat": 51.1163613,
+  "lon": 17.0310992,
+  "q": "Pomorska 2"
+ },
+ "Marina Kleczków, ul. Pasterska 2b": {
+  "lat": 51.1306327,
+  "lon": 17.0324202,
+  "q": "Pasterska 2b"
+ },
+ "Centrum Kultury Nowy Pafawag, ul. Chociebuska 4-6": {
+  "lat": 51.1157073,
+  "lon": 16.958153,
+  "q": "Chociebuska 4-6"
  }
 }
