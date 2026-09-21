@@ -565,5 +565,20 @@
   "lat": 51.1157073,
   "lon": 16.958153,
   "q": "Chociebuska 4-6"
+ },
+ "Publiczne Przedszkole Columbus, ul. Zielna 42": {
+  "lat": 51.1433706,
+  "lon": 17.1169654,
+  "q": "Zielna 42"
+ },
+ "Katedra św. Marii Magdaleny, ul. Szewska 10": {
+  "lat": 51.1094963,
+  "lon": 17.0350417,
+  "q": "Szewska 10"
+ },
+ "Klub Muzyki i Literatury, pl. T. Kościuszki 10": {
+  "lat": 51.102442,
+  "lon": 17.0287189,
+  "q": "Klub Muzyki i Literatury"
  }
 }
