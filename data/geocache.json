@@ -580,5 +580,25 @@
   "lat": 51.102442,
   "lon": 17.0287189,
   "q": "Klub Muzyki i Literatury"
+ },
+ "ul. Świdnicka": {
+  "lat": 51.1004493,
+  "lon": 17.0285597,
+  "q": "Świdnicka"
+ },
+ "Four Points by Sheraton Wrocław, ul. Gajowicka 130": {
+  "lat": 51.0898674,
+  "lon": 17.0077104,
+  "q": "Gajowicka 130"
+ },
+ "Marina Kleczków - Beach Bar, ul. Pasterska 2b": {
+  "lat": 51.1306327,
+  "lon": 17.0324202,
+  "q": "Pasterska 2b"
+ },
+ "Klub Nietota, ul. Kazimierza Wielkiego 50": {
+  "lat": 51.1077045,
+  "lon": 17.0316186,
+  "q": "Kazimierza Wielkiego 50"
  }
 }
