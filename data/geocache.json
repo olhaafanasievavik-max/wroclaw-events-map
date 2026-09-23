@@ -615,5 +615,10 @@
   "lat": 51.1152822,
   "lon": 17.0225821,
   "q": "Księcia Witolda 60/3"
+ },
+ "Aquapark Wrocław, ul. Borowska 99": {
+  "lat": 51.0904884,
+  "lon": 17.0326657,
+  "q": "Borowska 99"
  }
 }

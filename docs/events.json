@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T10:16",
+ "generated": "2026-09-23T10:46",
  "events": [
   {
    "date": "2026-09-04",
@@ -3502,6 +3502,26 @@
    "url": "https://t.me/wroclaw_in/1103"
   },
   {
+   "date": "2026-09-26",
+   "title": "Большое саунное событие во Вроцлаве - Wielkie Wrocławskie Saunowanie 7",
+   "address": "Aquapark Wrocław, ul. Borowska 99",
+   "time_start": null,
+   "time_end": null,
+   "description": "26-27 сентября в Aquapark Wrocław пройдет седьмой фестиваль Wielkie Wrocławskie Saunowanie. В этом году тема - Polska Biesiada 🇵🇱\n🔥 Что будет: специальные сауна-церемонии, дымные, музыкальные и ароматические сеансы, польские угощения и напитки, гриль, народные игры, бросание подковы и показ боёв на мечах ⚔️\nВо время мероприятия в Saunarium будет более праздничная атмосфера, поэтому обычная зона тишины в этот уикенд не действует.\n👉 Подробная информация",
+   "price": "Отдельный билет на мероприятие не нужен - участие входит в стоимость посещения Saunarium.",
+   "emoji": "🔥",
+   "title_ru": "Большой фестиваль саун во Вроцлаве (Wielkie Wrocławskie Saunowanie 7)",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1106",
+   "lat": 51.0904884,
+   "lon": 17.0326657,
+   "geo_query": "Borowska 99",
+   "day_index": 1,
+   "day_count": 2,
+   "recurrence": null,
+   "url": "https://t.me/wroclaw_in/1106"
+  },
+  {
    "date": "2026-09-27",
    "title": "Jabłkobranie рядом с Вроцлавом - собираем яблоки прямо с дерева",
    "address": "Sad Owocowy Dorota Kowalska, ul. Pierwoszowska 2, Wisznia Mała",
@@ -3520,6 +3540,26 @@
    "day_count": 17,
    "recurrence": "по субботам и воскресеньям",
    "url": "https://t.me/c/2587238779/1033"
+  },
+  {
+   "date": "2026-09-27",
+   "title": "Большое саунное событие во Вроцлаве - Wielkie Wrocławskie Saunowanie 7",
+   "address": "Aquapark Wrocław, ul. Borowska 99",
+   "time_start": null,
+   "time_end": null,
+   "description": "26-27 сентября в Aquapark Wrocław пройдет седьмой фестиваль Wielkie Wrocławskie Saunowanie. В этом году тема - Polska Biesiada 🇵🇱\n🔥 Что будет: специальные сауна-церемонии, дымные, музыкальные и ароматические сеансы, польские угощения и напитки, гриль, народные игры, бросание подковы и показ боёв на мечах ⚔️\nВо время мероприятия в Saunarium будет более праздничная атмосфера, поэтому обычная зона тишины в этот уикенд не действует.\n👉 Подробная информация",
+   "price": "Отдельный билет на мероприятие не нужен - участие входит в стоимость посещения Saunarium.",
+   "emoji": "🔥",
+   "title_ru": "Большой фестиваль саун во Вроцлаве (Wielkie Wrocławskie Saunowanie 7)",
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1106",
+   "lat": 51.0904884,
+   "lon": 17.0326657,
+   "geo_query": "Borowska 99",
+   "day_index": 2,
+   "day_count": 2,
+   "recurrence": null,
+   "url": "https://t.me/wroclaw_in/1106"
   },
   {
    "date": "2026-10-03",
