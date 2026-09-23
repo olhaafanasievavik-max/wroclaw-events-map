@@ -1,10 +1,14 @@
 name: update map
 
+# GitHub запускает расписание не по расписанию: cron «каждые 30 минут» на деле
+# срабатывал раз в 3-5 часов. Поэтому запуск теперь долгий: src/listen.py висит
+# на связи с Telegram, отвечает боту сразу и раз в 30 минут читает каналы.
+# Часовой cron нужен только чтобы поднять слушателя, если он завершился.
 on:
   schedule:
-    - cron: "*/30 5-22 * * *"   # каждые 30 минут с 05:00 до 22:59 UTC (07-00 по Вроцлаву летом)
-  workflow_dispatch:            # кнопка «Run workflow» для ручного запуска
-  push:                         # и после изменений кода, чтобы сразу пересобрать карту
+    - cron: "7 * * * *"
+  workflow_dispatch:
+  push:
     branches: [main]
     paths: ["src/**", "docs/index.html", ".github/workflows/update.yml"]
 
@@ -13,11 +17,12 @@ permissions:
 
 concurrency:
   group: update-map
-  cancel-in-progress: false
+  cancel-in-progress: true      # новый запуск сменяет старого слушателя
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 345
     steps:
       - uses: actions/checkout@v5
 
@@ -27,39 +32,15 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: fetch new posts from Telegram
+      - name: listen for messages and keep the map fresh
         env:
           TG_API_ID: ${{ secrets.TG_API_ID }}
           TG_API_HASH: ${{ secrets.TG_API_HASH }}
           TG_SESSION: ${{ secrets.TG_SESSION }}
           TG_CHANNELS: ${{ secrets.TG_CHANNELS }}
-        run: python src/fetch_telegram.py
-
-      - name: fetch messages sent to the bot
-        env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_OWNER_ID: ${{ secrets.TG_OWNER_ID }}
-        run: python src/fetch_bot.py
-
-      - name: build events.json
-        env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python src/build.py --translate
-
-      - name: commit results
-        run: |
-          git config user.name "map-bot"
-          git config user.email "map-bot@users.noreply.github.com"
-          git add data docs
-          git diff --cached --quiet || git commit -m "update events $(date -u +'%Y-%m-%d %H:%M')"
-          git push
-
-      - name: refresh bot menu button (cache-busting URL)
-        env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-        run: |
-          [ -z "$TG_BOT_TOKEN" ] && { echo "нет TG_BOT_TOKEN, пропускаю"; exit 0; }
-          V=$(git rev-parse --short HEAD)
-          curl -s -X POST "https://api.telegram.org/bot$TG_BOT_TOKEN/setChatMenuButton" \
-            -H "Content-Type: application/json" \
-            -d "{\"menu_button\":{\"type\":\"web_app\",\"text\":\"Карта\",\"web_app\":{\"url\":\"https://olhaafanasievavik-max.github.io/wroclaw-events-map/?v=$V\"}}}" > /dev/null
+          LISTEN_MINUTES: "330"
+          CHANNEL_EVERY_MIN: "30"
+        run: python src/listen.py
