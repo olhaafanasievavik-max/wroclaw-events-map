@@ -600,5 +600,20 @@
   "lat": 51.1077045,
   "lon": 17.0316186,
   "q": "Kazimierza Wielkiego 50"
+ },
+ "Teatr Polski - Scena na Świebodzkim, pl. Orląt Lwowskich 20c": {
+  "lat": 51.1076891,
+  "lon": 17.019951,
+  "q": "Orląt Lwowskich 20c"
+ },
+ "Parafia św. Antoniego, al. Kasprowicza 26": {
+  "lat": 51.137203,
+  "lon": 17.041925,
+  "q": "Kasprowicza 26"
+ },
+ "Coffee Planet, ul. Księcia Witolda 60/3": {
+  "lat": 51.1152822,
+  "lon": 17.0225821,
+  "q": "Księcia Witolda 60/3"
  }
 }
