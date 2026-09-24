@@ -620,5 +620,25 @@
   "lat": 51.0904884,
   "lon": 17.0326657,
   "q": "Borowska 99"
+ },
+ "Dolnośląska Biblioteka Publiczna, Rynek 58": {
+  "lat": 51.1109946,
+  "lon": 17.0313397,
+  "q": "Rynek 58"
+ },
+ "Dziady i Koktajle, ul. Jatki 3/4": {
+  "lat": 51.1121441,
+  "lon": 17.0306343,
+  "q": "Jatki 3/4"
+ },
+ "Momenty - klub muzyczny, ul. Ofiar Oświęcimskich 36": {
+  "lat": 51.1079972,
+  "lon": 17.0345182,
+  "q": "Ofiar Oświęcimskich 36"
+ },
+ "Beyond Music Club, ul. Łaciarska 61": {
+  "lat": 51.1081357,
+  "lon": 17.0348697,
+  "q": "Łaciarska 61"
  }
 }
