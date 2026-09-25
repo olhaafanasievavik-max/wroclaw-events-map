@@ -645,5 +645,16 @@
   "lat": 51.1262263,
   "lon": 16.9829666,
   "q": "Legnicka 65A"
+ },
+ "Odra Centrum, Wybrzeże Juliusza Słowackiego 5B": {
+  "lat": 51.1088648,
+  "lon": 17.0523158,
+  "q": "Wybrzeże Juliusza Słowackiego 5B"
+ },
+ "Podwórko Ruska 46": null,
+ "Stary Klasztor, ul. Purkyniego 1": {
+  "lat": 51.1103079,
+  "lon": 17.0397134,
+  "q": "Purkyniego 1"
  }
 }
