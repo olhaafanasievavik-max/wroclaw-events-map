@@ -656,5 +656,10 @@
   "lat": 51.1103079,
   "lon": 17.0397134,
   "q": "Purkyniego 1"
+ },
+ "Pałac Wrocław Pawłowice, ul. Pawłowicka 87/89": {
+  "lat": 51.1679241,
+  "lon": 17.1121753,
+  "q": "Pawłowicka 87/89"
  }
 }
