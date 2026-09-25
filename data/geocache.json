@@ -661,5 +661,10 @@
   "lat": 51.1679241,
   "lon": 17.1121753,
   "q": "Pawłowicka 87/89"
+ },
+ "Wrocławskie Centrum Kongresowe, Wystawowa 1, Wrocław": {
+  "lat": 51.1068875,
+  "lon": 17.0773185,
+  "q": "Wystawowa 1"
  }
 }
