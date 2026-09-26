@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-26T05:48",
+ "generated": "2026-09-26T06:18",
  "events": [
   {
    "date": "2026-09-04",
@@ -3720,6 +3720,26 @@
    "day_count": 1,
    "recurrence": null,
    "url": "https://t.me/wroclaw_in/1114"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "Доброе утро, Вроцлав! 🌤",
+   "address": "Coffee Planet, ul. Księcia Witolda 60/3",
+   "time_start": "08:00",
+   "time_end": "23:00",
+   "description": "🌡 Погода: утром около +7°C, днём до +21°C. Переменная облачность, без дождя.\nЧто интересного сегодня:\nОтличной субботы и насыщенных выходных! ✨",
+   "price": "Вход свободный.",
+   "emoji": "",
+   "title_ru": null,
+   "source": "Вроцлав Интересно",
+   "message_id": "2587238779_1117",
+   "lat": 51.1152822,
+   "lon": 17.0225821,
+   "geo_query": "Księcia Witolda 60/3",
+   "day_index": 1,
+   "day_count": 1,
+   "recurrence": null,
+   "url": "https://t.me/wroclaw_in/1117"
   },
   {
    "date": "2026-09-26",
