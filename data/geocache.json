@@ -666,5 +666,20 @@
   "lat": 51.1068875,
   "lon": 17.0773185,
   "q": "Wystawowa 1"
+ },
+ "HUTA, ul. Grabiszyńska 241": {
+  "lat": 51.0971978,
+  "lon": 16.9875576,
+  "q": "Grabiszyńska 241"
+ },
+ "CAL Księże, ul. Rybnicka 39-41": {
+  "lat": 51.080145,
+  "lon": 17.0879124,
+  "q": "Rybnicka 39-41"
+ },
+ "Зелёная территория возле Przedszkole nr 5, ul. Dźwirzyńska": {
+  "lat": 51.12612,
+  "lon": 16.9452357,
+  "q": "Dźwirzyńska"
  }
 }
