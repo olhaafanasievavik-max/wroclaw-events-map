@@ -681,5 +681,15 @@
   "lat": 51.12612,
   "lon": 16.9452357,
   "q": "Dźwirzyńska"
+ },
+ "Centrum Kultury Agora, ul. Serbska 5a": {
+  "lat": 51.1348935,
+  "lon": 17.0216432,
+  "q": "Serbska 5a"
+ },
+ "Zaklęte Rewiry, ul. Krakowska 100": {
+  "lat": 51.0907562,
+  "lon": 17.0661795,
+  "q": "Krakowska 100"
  }
 }
