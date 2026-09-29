@@ -707,5 +707,10 @@
   "lat": 51.1306327,
   "lon": 17.0324202,
   "q": "Pasterska 2B"
+ },
+ "Dolnośląski Oddział NFZ, ul. Traugutta 55, Wrocław": {
+  "lat": 51.1046134,
+  "lon": 17.0476473,
+  "q": "Traugutta 55"
  }
 }
