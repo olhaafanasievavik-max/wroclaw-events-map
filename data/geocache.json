@@ -691,5 +691,21 @@
   "lat": 51.0907562,
   "lon": 17.0661795,
   "q": "Krakowska 100"
+ },
+ "Dawne korty tenisowe w Parku im. Lesława Węgrzynowskiego, przy ul. Tęczowej 58": null,
+ "CAL Chopina, ul. Chopina 9A": {
+  "lat": 51.1198666,
+  "lon": 17.0820863,
+  "q": "Chopina 9A"
+ },
+ "Hala Świebodzki - food court, pl. Orląt Lwowskich 20B": {
+  "lat": 51.1081854,
+  "lon": 17.0191534,
+  "q": "Orląt Lwowskich 20B"
+ },
+ "Marina Kleczków - Beach Bar, ul. Pasterska 2B": {
+  "lat": 51.1306327,
+  "lon": 17.0324202,
+  "q": "Pasterska 2B"
  }
 }
